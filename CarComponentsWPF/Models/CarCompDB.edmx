@@ -1,0 +1,681 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище CarCompDB8Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CarModels">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "CarCompDB8.dbo.ComponentCarModels" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="ComponentCarModels">
+          <Key>
+            <PropertyRef Name="id_CarComp" />
+            <PropertyRef Name="id_CarModel" />
+          </Key>
+          <Property Name="id_CarComp" Type="int" Nullable="false" />
+          <Property Name="id_CarModel" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Components">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_Manuf" Type="int" Nullable="false" />
+          <Property Name="id_CompType" Type="int" Nullable="false" />
+          <Property Name="PrimeCost" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ComponentTypes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Manufacters">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Contry" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProviderComponents">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_CarComp" Type="int" Nullable="false" />
+          <Property Name="id_Provider" Type="int" Nullable="false" />
+          <Property Name="RetailPrice" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Providers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PhoneNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "CarCompDB8.dbo.AllCarComonentsFromProvidersVIEW" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="AllCarComonentsFromProvidersVIEW">
+          <Key>
+            <PropertyRef Name="Manufacter" />
+            <PropertyRef Name="Country" />
+            <PropertyRef Name="Type" />
+            <PropertyRef Name="CarModel" />
+            <PropertyRef Name="Provider" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="Quantity" />
+          </Key>
+          <Property Name="Manufacter" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CarModel" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Provider" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProviderPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProviderAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="Price" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "CarCompDB8.dbo.AllCarComonentsVIEW" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="AllCarComonentsVIEW">
+          <Key>
+            <PropertyRef Name="Manufacter" />
+            <PropertyRef Name="Country" />
+            <PropertyRef Name="CarModel" />
+            <PropertyRef Name="Type" />
+            <PropertyRef Name="PrimeCost" />
+          </Key>
+          <Property Name="Manufacter" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CarModel" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PrimeCost" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "CarCompDB8.dbo.CompProviderCROSSJOIN" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="CompProviderCROSSJOIN">
+          <Key>
+            <PropertyRef Name="Provider" />
+            <PropertyRef Name="Manufacter" />
+            <PropertyRef Name="Type" />
+            <PropertyRef Name="CarModel" />
+            <PropertyRef Name="PrimeCost" />
+          </Key>
+          <Property Name="Provider" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Manufacter" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CarModel" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PrimeCost" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "CarCompDB8.dbo.ManTypModCROSSJOIN" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="ManTypModCROSSJOIN">
+          <Key>
+            <PropertyRef Name="Manufacter" />
+            <PropertyRef Name="CompType" />
+            <PropertyRef Name="CarModel" />
+          </Key>
+          <Property Name="Manufacter" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CompType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CarModel" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ComponentCarModels_CarModels">
+          <End Role="CarModels" Type="Self.CarModels" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ComponentCarModels" Type="Self.ComponentCarModels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarModels">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ComponentCarModels">
+              <PropertyRef Name="id_CarModel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ComponentCarModels_Components">
+          <End Role="Components" Type="Self.Components" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ComponentCarModels" Type="Self.ComponentCarModels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Components">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ComponentCarModels">
+              <PropertyRef Name="id_CarComp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Components_ComponentTypes">
+          <End Role="ComponentTypes" Type="Self.ComponentTypes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Components" Type="Self.Components" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ComponentTypes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Components">
+              <PropertyRef Name="id_CompType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Components_Manufacters">
+          <End Role="Manufacters" Type="Self.Manufacters" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Components" Type="Self.Components" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manufacters">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Components">
+              <PropertyRef Name="id_Manuf" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProviderComponents_Components">
+          <End Role="Components" Type="Self.Components" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProviderComponents" Type="Self.ProviderComponents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Components">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ProviderComponents">
+              <PropertyRef Name="id_CarComp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProviderComponents_Providers">
+          <End Role="Providers" Type="Self.Providers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProviderComponents" Type="Self.ProviderComponents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Providers">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ProviderComponents">
+              <PropertyRef Name="id_Provider" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище CarCompDB8ModelContainer">
+          <EntitySet Name="CarModels" EntityType="Self.CarModels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Components" EntityType="Self.Components" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComponentTypes" EntityType="Self.ComponentTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Manufacters" EntityType="Self.Manufacters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProviderComponents" EntityType="Self.ProviderComponents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Providers" EntityType="Self.Providers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComponentCarModels" EntityType="Self.ComponentCarModels" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ComponentCarModels].[id_CarComp] AS [id_CarComp], 
+    [ComponentCarModels].[id_CarModel] AS [id_CarModel]
+    FROM [dbo].[ComponentCarModels] AS [ComponentCarModels]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="AllCarComonentsFromProvidersVIEW" EntityType="Self.AllCarComonentsFromProvidersVIEW" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AllCarComonentsFromProvidersVIEW].[Manufacter] AS [Manufacter], 
+    [AllCarComonentsFromProvidersVIEW].[Country] AS [Country], 
+    [AllCarComonentsFromProvidersVIEW].[Type] AS [Type], 
+    [AllCarComonentsFromProvidersVIEW].[CarModel] AS [CarModel], 
+    [AllCarComonentsFromProvidersVIEW].[Provider] AS [Provider], 
+    [AllCarComonentsFromProvidersVIEW].[ProviderPhone] AS [ProviderPhone], 
+    [AllCarComonentsFromProvidersVIEW].[ProviderAddress] AS [ProviderAddress], 
+    [AllCarComonentsFromProvidersVIEW].[Price] AS [Price], 
+    [AllCarComonentsFromProvidersVIEW].[Quantity] AS [Quantity]
+    FROM [dbo].[AllCarComonentsFromProvidersVIEW] AS [AllCarComonentsFromProvidersVIEW]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="AllCarComonentsVIEW" EntityType="Self.AllCarComonentsVIEW" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AllCarComonentsVIEW].[Manufacter] AS [Manufacter], 
+    [AllCarComonentsVIEW].[Country] AS [Country], 
+    [AllCarComonentsVIEW].[CarModel] AS [CarModel], 
+    [AllCarComonentsVIEW].[Type] AS [Type], 
+    [AllCarComonentsVIEW].[PrimeCost] AS [PrimeCost]
+    FROM [dbo].[AllCarComonentsVIEW] AS [AllCarComonentsVIEW]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CompProviderCROSSJOIN" EntityType="Self.CompProviderCROSSJOIN" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CompProviderCROSSJOIN].[Provider] AS [Provider], 
+    [CompProviderCROSSJOIN].[Manufacter] AS [Manufacter], 
+    [CompProviderCROSSJOIN].[Type] AS [Type], 
+    [CompProviderCROSSJOIN].[CarModel] AS [CarModel], 
+    [CompProviderCROSSJOIN].[PrimeCost] AS [PrimeCost]
+    FROM [dbo].[CompProviderCROSSJOIN] AS [CompProviderCROSSJOIN]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ManTypModCROSSJOIN" EntityType="Self.ManTypModCROSSJOIN" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ManTypModCROSSJOIN].[Manufacter] AS [Manufacter], 
+    [ManTypModCROSSJOIN].[CompType] AS [CompType], 
+    [ManTypModCROSSJOIN].[CarModel] AS [CarModel]
+    FROM [dbo].[ManTypModCROSSJOIN] AS [ManTypModCROSSJOIN]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_ComponentCarModels_CarModels" Association="Self.FK_ComponentCarModels_CarModels">
+            <End Role="CarModels" EntitySet="CarModels" />
+            <End Role="ComponentCarModels" EntitySet="ComponentCarModels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ComponentCarModels_Components" Association="Self.FK_ComponentCarModels_Components">
+            <End Role="Components" EntitySet="Components" />
+            <End Role="ComponentCarModels" EntitySet="ComponentCarModels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Components_ComponentTypes" Association="Self.FK_Components_ComponentTypes">
+            <End Role="ComponentTypes" EntitySet="ComponentTypes" />
+            <End Role="Components" EntitySet="Components" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Components_Manufacters" Association="Self.FK_Components_Manufacters">
+            <End Role="Manufacters" EntitySet="Manufacters" />
+            <End Role="Components" EntitySet="Components" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProviderComponents_Components" Association="Self.FK_ProviderComponents_Components">
+            <End Role="Components" EntitySet="Components" />
+            <End Role="ProviderComponents" EntitySet="ProviderComponents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProviderComponents_Providers" Association="Self.FK_ProviderComponents_Providers">
+            <End Role="Providers" EntitySet="Providers" />
+            <End Role="ProviderComponents" EntitySet="ProviderComponents" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CarCompDB8Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CarModel">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Components" Relationship="Self.ComponentCarModels" FromRole="CarModels" ToRole="Components" />
+        </EntityType>
+        <EntityType Name="Component">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Manuf" Type="Int32" Nullable="false" />
+          <Property Name="id_CompType" Type="Int32" Nullable="false" />
+          <Property Name="PrimeCost" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ComponentType" Relationship="Self.FK_Components_ComponentTypes" FromRole="Components" ToRole="ComponentTypes" />
+          <NavigationProperty Name="Manufacter" Relationship="Self.FK_Components_Manufacters" FromRole="Components" ToRole="Manufacters" />
+          <NavigationProperty Name="ProviderComponents" Relationship="Self.FK_ProviderComponents_Components" FromRole="Components" ToRole="ProviderComponents" />
+          <NavigationProperty Name="CarModels" Relationship="Self.ComponentCarModels" FromRole="Components" ToRole="CarModels" />
+        </EntityType>
+        <EntityType Name="ComponentType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Components" Relationship="Self.FK_Components_ComponentTypes" FromRole="ComponentTypes" ToRole="Components" />
+        </EntityType>
+        <EntityType Name="Manufacter">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Contry" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Components" Relationship="Self.FK_Components_Manufacters" FromRole="Manufacters" ToRole="Components" />
+        </EntityType>
+        <EntityType Name="ProviderComponent">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_CarComp" Type="Int32" Nullable="false" />
+          <Property Name="id_Provider" Type="Int32" Nullable="false" />
+          <Property Name="RetailPrice" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Component" Relationship="Self.FK_ProviderComponents_Components" FromRole="ProviderComponents" ToRole="Components" />
+          <NavigationProperty Name="Provider" Relationship="Self.FK_ProviderComponents_Providers" FromRole="ProviderComponents" ToRole="Providers" />
+        </EntityType>
+        <EntityType Name="Provider">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PhoneNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ProviderComponents" Relationship="Self.FK_ProviderComponents_Providers" FromRole="Providers" ToRole="ProviderComponents" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="AllCarComonentsFromProvidersVIEW">
+          <Key>
+            <PropertyRef Name="Manufacter" />
+            <PropertyRef Name="Country" />
+            <PropertyRef Name="Type" />
+            <PropertyRef Name="CarModel" />
+            <PropertyRef Name="Provider" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="Quantity" />
+          </Key>
+          <Property Name="Manufacter" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CarModel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Provider" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AllCarComonentsVIEW">
+          <Key>
+            <PropertyRef Name="Manufacter" />
+            <PropertyRef Name="Country" />
+            <PropertyRef Name="CarModel" />
+            <PropertyRef Name="Type" />
+            <PropertyRef Name="PrimeCost" />
+          </Key>
+          <Property Name="Manufacter" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CarModel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PrimeCost" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CompProviderCROSSJOIN">
+          <Key>
+            <PropertyRef Name="Provider" />
+            <PropertyRef Name="Manufacter" />
+            <PropertyRef Name="Type" />
+            <PropertyRef Name="CarModel" />
+            <PropertyRef Name="PrimeCost" />
+          </Key>
+          <Property Name="Provider" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Manufacter" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CarModel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PrimeCost" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ManTypModCROSSJOIN">
+          <Key>
+            <PropertyRef Name="Manufacter" />
+            <PropertyRef Name="CompType" />
+            <PropertyRef Name="CarModel" />
+          </Key>
+          <Property Name="Manufacter" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CompType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CarModel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Components_ComponentTypes">
+          <End Role="ComponentTypes" Type="Self.ComponentType" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Components" Type="Self.Component" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ComponentTypes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Components">
+              <PropertyRef Name="id_CompType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Components_Manufacters">
+          <End Role="Manufacters" Type="Self.Manufacter" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Components" Type="Self.Component" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manufacters">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Components">
+              <PropertyRef Name="id_Manuf" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProviderComponents_Components">
+          <End Role="Components" Type="Self.Component" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProviderComponents" Type="Self.ProviderComponent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Components">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ProviderComponents">
+              <PropertyRef Name="id_CarComp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProviderComponents_Providers">
+          <End Role="Providers" Type="Self.Provider" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProviderComponents" Type="Self.ProviderComponent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Providers">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ProviderComponents">
+              <PropertyRef Name="id_Provider" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ComponentCarModels">
+          <End Role="CarModels" Type="Self.CarModel" Multiplicity="*" />
+          <End Role="Components" Type="Self.Component" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="CarCompDB8Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CarModels" EntityType="Self.CarModel" />
+          <EntitySet Name="Components" EntityType="Self.Component" />
+          <EntitySet Name="ComponentTypes" EntityType="Self.ComponentType" />
+          <EntitySet Name="Manufacters" EntityType="Self.Manufacter" />
+          <EntitySet Name="ProviderComponents" EntityType="Self.ProviderComponent" />
+          <EntitySet Name="Providers" EntityType="Self.Provider" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="AllCarComonentsFromProvidersVIEWs" EntityType="Self.AllCarComonentsFromProvidersVIEW" />
+          <EntitySet Name="AllCarComonentsVIEWs" EntityType="Self.AllCarComonentsVIEW" />
+          <EntitySet Name="CompProviderCROSSJOINs" EntityType="Self.CompProviderCROSSJOIN" />
+          <EntitySet Name="ManTypModCROSSJOINs" EntityType="Self.ManTypModCROSSJOIN" />
+          <AssociationSet Name="FK_Components_ComponentTypes" Association="Self.FK_Components_ComponentTypes">
+            <End Role="ComponentTypes" EntitySet="ComponentTypes" />
+            <End Role="Components" EntitySet="Components" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Components_Manufacters" Association="Self.FK_Components_Manufacters">
+            <End Role="Manufacters" EntitySet="Manufacters" />
+            <End Role="Components" EntitySet="Components" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProviderComponents_Components" Association="Self.FK_ProviderComponents_Components">
+            <End Role="Components" EntitySet="Components" />
+            <End Role="ProviderComponents" EntitySet="ProviderComponents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProviderComponents_Providers" Association="Self.FK_ProviderComponents_Providers">
+            <End Role="Providers" EntitySet="Providers" />
+            <End Role="ProviderComponents" EntitySet="ProviderComponents" />
+          </AssociationSet>
+          <AssociationSet Name="ComponentCarModels" Association="Self.ComponentCarModels">
+            <End Role="CarModels" EntitySet="CarModels" />
+            <End Role="Components" EntitySet="Components" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище CarCompDB8ModelContainer" CdmEntityContainer="CarCompDB8Entities">
+          <EntitySetMapping Name="CarModels">
+            <EntityTypeMapping TypeName="CarCompDB8Model.CarModel">
+              <MappingFragment StoreEntitySet="CarModels">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Components">
+            <EntityTypeMapping TypeName="CarCompDB8Model.Component">
+              <MappingFragment StoreEntitySet="Components">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_Manuf" ColumnName="id_Manuf" />
+                <ScalarProperty Name="id_CompType" ColumnName="id_CompType" />
+                <ScalarProperty Name="PrimeCost" ColumnName="PrimeCost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComponentTypes">
+            <EntityTypeMapping TypeName="CarCompDB8Model.ComponentType">
+              <MappingFragment StoreEntitySet="ComponentTypes">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Manufacters">
+            <EntityTypeMapping TypeName="CarCompDB8Model.Manufacter">
+              <MappingFragment StoreEntitySet="Manufacters">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Contry" ColumnName="Contry" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProviderComponents">
+            <EntityTypeMapping TypeName="CarCompDB8Model.ProviderComponent">
+              <MappingFragment StoreEntitySet="ProviderComponents">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_CarComp" ColumnName="id_CarComp" />
+                <ScalarProperty Name="id_Provider" ColumnName="id_Provider" />
+                <ScalarProperty Name="RetailPrice" ColumnName="RetailPrice" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Providers">
+            <EntityTypeMapping TypeName="CarCompDB8Model.Provider">
+              <MappingFragment StoreEntitySet="Providers">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PhoneNum" ColumnName="PhoneNum" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="CarCompDB8Model.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AllCarComonentsFromProvidersVIEWs">
+            <EntityTypeMapping TypeName="CarCompDB8Model.AllCarComonentsFromProvidersVIEW">
+              <MappingFragment StoreEntitySet="AllCarComonentsFromProvidersVIEW">
+                <ScalarProperty Name="Manufacter" ColumnName="Manufacter" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="CarModel" ColumnName="CarModel" />
+                <ScalarProperty Name="Provider" ColumnName="Provider" />
+                <ScalarProperty Name="ProviderPhone" ColumnName="ProviderPhone" />
+                <ScalarProperty Name="ProviderAddress" ColumnName="ProviderAddress" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AllCarComonentsVIEWs">
+            <EntityTypeMapping TypeName="CarCompDB8Model.AllCarComonentsVIEW">
+              <MappingFragment StoreEntitySet="AllCarComonentsVIEW">
+                <ScalarProperty Name="Manufacter" ColumnName="Manufacter" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="CarModel" ColumnName="CarModel" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="PrimeCost" ColumnName="PrimeCost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompProviderCROSSJOINs">
+            <EntityTypeMapping TypeName="CarCompDB8Model.CompProviderCROSSJOIN">
+              <MappingFragment StoreEntitySet="CompProviderCROSSJOIN">
+                <ScalarProperty Name="Provider" ColumnName="Provider" />
+                <ScalarProperty Name="Manufacter" ColumnName="Manufacter" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="CarModel" ColumnName="CarModel" />
+                <ScalarProperty Name="PrimeCost" ColumnName="PrimeCost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ManTypModCROSSJOINs">
+            <EntityTypeMapping TypeName="CarCompDB8Model.ManTypModCROSSJOIN">
+              <MappingFragment StoreEntitySet="ManTypModCROSSJOIN">
+                <ScalarProperty Name="Manufacter" ColumnName="Manufacter" />
+                <ScalarProperty Name="CompType" ColumnName="CompType" />
+                <ScalarProperty Name="CarModel" ColumnName="CarModel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="ComponentCarModels" TypeName="CarCompDB8Model.ComponentCarModels" StoreEntitySet="ComponentCarModels">
+            <EndProperty Name="CarModels">
+              <ScalarProperty Name="id" ColumnName="id_CarModel" />
+            </EndProperty>
+            <EndProperty Name="Components">
+              <ScalarProperty Name="id" ColumnName="id_CarComp" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

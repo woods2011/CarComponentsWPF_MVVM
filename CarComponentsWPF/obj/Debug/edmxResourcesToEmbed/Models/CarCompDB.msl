@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище CarCompDB8ModelContainer" CdmEntityContainer="CarCompDB8Entities">
+    <EntitySetMapping Name="CarModels">
+      <EntityTypeMapping TypeName="CarCompDB8Model.CarModel">
+        <MappingFragment StoreEntitySet="CarModels">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Components">
+      <EntityTypeMapping TypeName="CarCompDB8Model.Component">
+        <MappingFragment StoreEntitySet="Components">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_Manuf" ColumnName="id_Manuf" />
+          <ScalarProperty Name="id_CompType" ColumnName="id_CompType" />
+          <ScalarProperty Name="PrimeCost" ColumnName="PrimeCost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ComponentTypes">
+      <EntityTypeMapping TypeName="CarCompDB8Model.ComponentType">
+        <MappingFragment StoreEntitySet="ComponentTypes">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Manufacters">
+      <EntityTypeMapping TypeName="CarCompDB8Model.Manufacter">
+        <MappingFragment StoreEntitySet="Manufacters">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Contry" ColumnName="Contry" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProviderComponents">
+      <EntityTypeMapping TypeName="CarCompDB8Model.ProviderComponent">
+        <MappingFragment StoreEntitySet="ProviderComponents">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_CarComp" ColumnName="id_CarComp" />
+          <ScalarProperty Name="id_Provider" ColumnName="id_Provider" />
+          <ScalarProperty Name="RetailPrice" ColumnName="RetailPrice" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Providers">
+      <EntityTypeMapping TypeName="CarCompDB8Model.Provider">
+        <MappingFragment StoreEntitySet="Providers">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PhoneNum" ColumnName="PhoneNum" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="CarCompDB8Model.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AllCarComonentsFromProvidersVIEWs">
+      <EntityTypeMapping TypeName="CarCompDB8Model.AllCarComonentsFromProvidersVIEW">
+        <MappingFragment StoreEntitySet="AllCarComonentsFromProvidersVIEW">
+          <ScalarProperty Name="Manufacter" ColumnName="Manufacter" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="CarModel" ColumnName="CarModel" />
+          <ScalarProperty Name="Provider" ColumnName="Provider" />
+          <ScalarProperty Name="ProviderPhone" ColumnName="ProviderPhone" />
+          <ScalarProperty Name="ProviderAddress" ColumnName="ProviderAddress" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AllCarComonentsVIEWs">
+      <EntityTypeMapping TypeName="CarCompDB8Model.AllCarComonentsVIEW">
+        <MappingFragment StoreEntitySet="AllCarComonentsVIEW">
+          <ScalarProperty Name="Manufacter" ColumnName="Manufacter" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="CarModel" ColumnName="CarModel" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="PrimeCost" ColumnName="PrimeCost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompProviderCROSSJOINs">
+      <EntityTypeMapping TypeName="CarCompDB8Model.CompProviderCROSSJOIN">
+        <MappingFragment StoreEntitySet="CompProviderCROSSJOIN">
+          <ScalarProperty Name="Provider" ColumnName="Provider" />
+          <ScalarProperty Name="Manufacter" ColumnName="Manufacter" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="CarModel" ColumnName="CarModel" />
+          <ScalarProperty Name="PrimeCost" ColumnName="PrimeCost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ManTypModCROSSJOINs">
+      <EntityTypeMapping TypeName="CarCompDB8Model.ManTypModCROSSJOIN">
+        <MappingFragment StoreEntitySet="ManTypModCROSSJOIN">
+          <ScalarProperty Name="Manufacter" ColumnName="Manufacter" />
+          <ScalarProperty Name="CompType" ColumnName="CompType" />
+          <ScalarProperty Name="CarModel" ColumnName="CarModel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ComponentCarModels" TypeName="CarCompDB8Model.ComponentCarModels" StoreEntitySet="ComponentCarModels">
+      <EndProperty Name="CarModels">
+        <ScalarProperty Name="id" ColumnName="id_CarModel" />
+      </EndProperty>
+      <EndProperty Name="Components">
+        <ScalarProperty Name="id" ColumnName="id_CarComp" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

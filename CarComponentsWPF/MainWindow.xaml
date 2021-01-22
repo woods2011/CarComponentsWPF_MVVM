@@ -5,17 +5,51 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CarComponentsWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="909">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
+        <Grid Background="#FFD0E3F6"  Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+
+            
+            <TextBlock Grid.Row="0" Margin="5" Text="Комплектующие автомобиля" FontSize="16"/>
+            <Menu Background="#FFD0E3F6"  Grid.Row="1" Margin="5,0,5,5" FontSize="14">
+                <MenuItem Background="#FFB9D7F3" Header="Главная" BorderBrush="Gray" Command="{Binding UpdateViewCommand}" CommandParameter="Home"/>
+                <MenuItem Background="#FFB9D7F3" Header="Обслуживание БД" BorderBrush="Gray">
+                    <MenuItem Background="#FFB9D7F3" Header="Опция 1" BorderBrush="Gray" Command="{Binding TestCommand}" CommandParameter="Account"/>
+                    <MenuItem Background="#FFB9D7F3" Header="Опция 2" BorderBrush="Gray" Command="{Binding TestCommand2}" CommandParameter="Account"/>
+                </MenuItem>
+                <MenuItem Background="#FFB9D7F3" Header="Производители" BorderBrush="Gray" Command="{Binding UpdateViewCommand}" CommandParameter="Home"/>
+                <MenuItem Background="#FFB9D7F3" Header="Типы комплектующих" BorderBrush="Gray" Command="{Binding UpdateViewCommand}" CommandParameter="Home"/>
+                <MenuItem Background="#FFB9D7F3" Header="Модели авто" BorderBrush="Gray" Command="{Binding UpdateViewCommand}" CommandParameter="Account"/>
+                <MenuItem Background="#FFB9D7F3" Header="Поставщики" BorderBrush="Gray" Command="{Binding UpdateViewCommand}" CommandParameter="Account"/>
+                <MenuItem Background="#FFB9D7F3" Header="Наличие у поставщиков" BorderBrush="Gray" Command="{Binding UpdateViewCommand}" CommandParameter="Account"/>
+            </Menu>
+        </Grid>
+
+
+        <!--<StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
+            <ToolBar>
             <Button Margin="10, 10, 5, 10" Width="100" Content="Home" Command="{Binding UpdateViewCommand}" CommandParameter="Home"/>
             <Button Margin="5, 10" Width="100" Content="Account" Command="{Binding UpdateViewCommand}" CommandParameter="Account"/>
-        </StackPanel>
+                <Menu Width="100" Na>
+                    <MenuItem>
+                        <Button Name="Button1" Width="100" Command="{Binding TestCommand}">first button</Button>
+                    </MenuItem>
+                    <MenuItem>
+                        <Button Name="Button2" Width="100" Command="{Binding TestCommand2}">first button</Button>
+                    </MenuItem>
+                </Menu>
+            </ToolBar>
+        </StackPanel>-->
 
         <ContentControl Grid.Row="1" Content="{Binding SelectedViewModel}"/>
     </Grid>

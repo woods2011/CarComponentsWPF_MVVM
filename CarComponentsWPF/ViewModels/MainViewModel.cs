@@ -25,6 +25,25 @@ namespace CarComponentsWPF.ViewModels
         public MainViewModel()
         {
             UpdateViewCommand = new UpdateViewCommand(this);
+            TestCommand = new ActionCommand(p => TestFunc());
+            TestCommand2 = new ActionCommand(p => TestFunc2());
+        }
+
+
+        public ICommand TestCommand { get; }
+
+        public ICommand TestCommand2 { get; }
+
+        private void TestFunc()
+        {
+            Console.WriteLine("KEK!!!");
+            return;
+        }
+
+        private void TestFunc2()
+        {
+            Console.WriteLine("noKEK!!!");
+            return;
         }
     }
 }

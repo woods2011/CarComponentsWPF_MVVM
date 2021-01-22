@@ -4,21 +4,24 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CarComponentsWPF.Views"
+             xmlns:ViewModels="clr-namespace:CarComponentsWPF.ViewModels"
+
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              Background="White">
+    <UserControl.DataContext>
+        <ViewModels:AccountViewModel/>
+    </UserControl.DataContext>
     <Grid Margin="100">
         <StackPanel>
-            <Label>Username</Label>
-            <!--<TextBox Text="{Binding Username, ValidatesOnExceptions=True, UpdateSourceTrigger=PropertyChanged}"
-                     Validation.ErrorTemplate="{StaticResource errorTemplate}"/>-->
-            <TextBox Text="{Binding Username, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+            <Label Content="Username"/>
+            <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                      ToolTip="{Binding ErrorCollection[Username]}"/>
-            <TextBox Text="{Binding Password, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+            <TextBox Text="{Binding Password, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                      ToolTip="{Binding ErrorCollection[Password]}"/>
 
             <Button Command="{Binding TestCommand, UpdateSourceTrigger=PropertyChanged}" 
-                    ToolTip="{Binding Error}" ToolTipService.ShowOnDisabled="True">Submit</Button>
+                    ToolTip="{Binding Error}" ToolTipService.ShowOnDisabled="True" Content="Submit"/>
 
             <!--<TextBlock>
                 <Hyperlink Command="{Binding TestCommand2}" ToolTip="{Binding Error}">Save</Hyperlink>
