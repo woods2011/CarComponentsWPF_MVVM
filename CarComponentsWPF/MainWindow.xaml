@@ -4,21 +4,24 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CarComponentsWPF"
+        xmlns:viewmodels="clr-namespace:CarComponentsWPF.ViewModels"
+        
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="909">
+        Title="MainWindow" Height="450" Width="909"
+        d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel, IsDesignTimeCreatable=True}">
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
+        
+        <!--Меню-->
         <Grid Background="#FFD0E3F6"  Grid.Row="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-
-
+            </Grid.RowDefinitions>            
             
             <TextBlock Grid.Row="0" Margin="5" Text="Комплектующие автомобиля" FontSize="16"/>
             <Menu Background="#FFD0E3F6"  Grid.Row="1" Margin="5,0,5,5" FontSize="14">
@@ -35,8 +38,25 @@
             </Menu>
         </Grid>
 
+        <!--Текущая ViewModel-->
+        <ContentControl Grid.Row="1" Content="{Binding SelectedViewModel}"/>
+        
+    </Grid>
+</Window>
 
-        <!--<StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
             <ToolBar>
             <Button Margin="10, 10, 5, 10" Width="100" Content="Home" Command="{Binding UpdateViewCommand}" CommandParameter="Home"/>
             <Button Margin="5, 10" Width="100" Content="Account" Command="{Binding UpdateViewCommand}" CommandParameter="Account"/>
@@ -50,7 +70,3 @@
                 </Menu>
             </ToolBar>
         </StackPanel>-->
-
-        <ContentControl Grid.Row="1" Content="{Binding SelectedViewModel}"/>
-    </Grid>
-</Window>

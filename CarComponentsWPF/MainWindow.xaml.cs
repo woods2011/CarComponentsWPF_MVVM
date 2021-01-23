@@ -1,4 +1,5 @@
-﻿using CarComponentsWPF.ViewModels;
+﻿using CarComponentsWPF.Services.DataServices;
+using CarComponentsWPF.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,8 @@ namespace CarComponentsWPF
     {
         public MainWindow()
         {
+            Class1 class1 = new Class1();
+
             InitializeComponent();
             //DataContext = new MainViewModel();
         }

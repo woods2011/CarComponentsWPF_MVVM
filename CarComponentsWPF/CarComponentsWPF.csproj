@@ -112,6 +112,7 @@
     <Compile Include="Models\CompProviderCROSSJOIN.cs">
       <DependentUpon>CarCompDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\IEntity.cs" />
     <Compile Include="Models\ManTypModCROSSJOIN.cs">
       <DependentUpon>CarCompDB.tt</DependentUpon>
     </Compile>
@@ -127,6 +128,12 @@
     <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>CarCompDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Services\AuthenticationServices\AuthenticationService.cs" />
+    <Compile Include="Services\AuthenticationServices\IAuthenticationService.cs" />
+    <Compile Include="Services\AuthenticationServices\Class1.cs" />
+    <Compile Include="Services\DataServices\GenericDataService.cs" />
+    <Compile Include="Services\DataServices\IDataService.cs" />
+    <Compile Include="Services\DataServices\ManufacterDataService.cs" />
     <Compile Include="ViewModels\AccountViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
@@ -212,8 +219,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controls\" />
-    <Folder Include="State\Authenticators\" />
-    <Folder Include="State\Navigators\" />
     <Folder Include="Styles\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
