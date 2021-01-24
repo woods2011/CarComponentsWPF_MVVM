@@ -26,14 +26,19 @@ namespace CarComponentsWPF.Commands
 
         public void Execute(object parameter)
         {
-            if (parameter.ToString() == "Home")
+            var param = parameter.ToString();
+            Console.WriteLine(param);
+            if (param == null)
+                return;
+
+            switch (param)
             {
-                viewModel.SelectedViewModel = new HomeViewModel();
+                case "Home": viewModel.SelectedViewModel = new HomeViewModel(); break;
+                case "Account": viewModel.SelectedViewModel = new AccountViewModel(); break;
+                case "Manufacter": viewModel.SelectedViewModel = new ManufacterViewModel(); break;
             }
-            else if (parameter.ToString() == "Account")
-            {
-                viewModel.SelectedViewModel = new AccountViewModel();
-            }
+
+            return;
         }
     }
 }

@@ -9,8 +9,15 @@ using System.Threading.Tasks;
 
 namespace CarComponentsWPF.ViewModels
 {
-    public class BaseViewModel : INotifyPropertyChanged, IDataErrorInfo
+    public abstract class BaseViewModel : INotifyPropertyChanged, IDataErrorInfo
     {
+        protected BaseViewModel()
+        {
+            ErrorCollection = new Dictionary<string, string>();
+        }
+
+
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
@@ -41,6 +48,7 @@ namespace CarComponentsWPF.ViewModels
         }
 
 
+
         #region Валидация
 
         public virtual bool IsValid
@@ -48,7 +56,7 @@ namespace CarComponentsWPF.ViewModels
             get => Validator.TryValidateObject(this, new ValidationContext(this), null, true);
         }
 
-        public Dictionary<string, string> ErrorCollection { get; private set; } = new Dictionary<string, string>();
+        public Dictionary<string, string> ErrorCollection { get; private set; }
 
         public virtual string Error
         {
@@ -104,7 +112,5 @@ namespace CarComponentsWPF.ViewModels
         }
 
         #endregion
-
-
     }
 }

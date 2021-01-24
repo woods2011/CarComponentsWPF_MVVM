@@ -1,46 +1,57 @@
-﻿<Window x:Class="CarComponentsWPF.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CarComponentsWPF"
-        xmlns:viewmodels="clr-namespace:CarComponentsWPF.ViewModels"
-        
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="909"
-        d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel, IsDesignTimeCreatable=True}">
+﻿<Window 
+    x:Class="CarComponentsWPF.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:CarComponentsWPF"
+    xmlns:viewmodels="clr-namespace:CarComponentsWPF.ViewModels"
     
+    mc:Ignorable="d"
+    Title="MainWindow" Height="450" Width="909"
+    d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel, IsDesignTimeCreatable=True}">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </Window.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
+            <!--<RowDefinition Height="auto"/>-->
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        
+
+
         <!--Меню-->
         <Grid Background="#FFD0E3F6"  Grid.Row="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>            
+            </Grid.RowDefinitions>
+
             
+            <!--<CheckBox IsChecked="{Binding IsVisible}"/>-->
             <TextBlock Grid.Row="0" Margin="5" Text="Комплектующие автомобиля" FontSize="16"/>
             <Menu Background="#FFD0E3F6"  Grid.Row="1" Margin="5,0,5,5" FontSize="14">
                 <MenuItem Background="#FFB9D7F3" Header="Главная" BorderBrush="Gray" Command="{Binding UpdateViewCommand}" CommandParameter="Home"/>
                 <MenuItem Background="#FFB9D7F3" Header="Обслуживание БД" BorderBrush="Gray">
-                    <MenuItem Background="#FFB9D7F3" Header="Опция 1" BorderBrush="Gray" Command="{Binding TestCommand}" CommandParameter="Account"/>
-                    <MenuItem Background="#FFB9D7F3" Header="Опция 2" BorderBrush="Gray" Command="{Binding TestCommand2}" CommandParameter="Account"/>
+                    <MenuItem Background="#FFB9D7F3" Header="Опция 1" BorderBrush="Gray" Command="{Binding UpdateViewCommand}" CommandParameter="Account"/>
+                    <MenuItem Background="#FFB9D7F3" Header="Опция 2" BorderBrush="Gray" Command="{Binding UpdateViewCommand}" CommandParameter="Account"/>
                 </MenuItem>
-                <MenuItem Background="#FFB9D7F3" Header="Производители" BorderBrush="Gray" Command="{Binding UpdateViewCommand}" CommandParameter="Home"/>
+                <MenuItem Background="#FFB9D7F3" Header="Производители" BorderBrush="Gray" Command="{Binding UpdateViewCommand}" CommandParameter="Manufacter"/>
                 <MenuItem Background="#FFB9D7F3" Header="Типы комплектующих" BorderBrush="Gray" Command="{Binding UpdateViewCommand}" CommandParameter="Home"/>
                 <MenuItem Background="#FFB9D7F3" Header="Модели авто" BorderBrush="Gray" Command="{Binding UpdateViewCommand}" CommandParameter="Account"/>
                 <MenuItem Background="#FFB9D7F3" Header="Поставщики" BorderBrush="Gray" Command="{Binding UpdateViewCommand}" CommandParameter="Account"/>
                 <MenuItem Background="#FFB9D7F3" Header="Наличие у поставщиков" BorderBrush="Gray" Command="{Binding UpdateViewCommand}" CommandParameter="Account"/>
-            </Menu>
+                </Menu>
         </Grid>
 
         <!--Текущая ViewModel-->
-        <ContentControl Grid.Row="1" Content="{Binding SelectedViewModel}"/>
+        <ScrollViewer x:Name="scroll1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Row="1" 
+                      Content="{Binding SelectedViewModel}"/>
         
+        <!--<ScrollViewer x:Name="scroll2"  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Grid.Row="2" 
+                      Content="{Binding SelectedViewModel2}" Visibility="{Binding IsNotVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>-->
     </Grid>
 </Window>
 

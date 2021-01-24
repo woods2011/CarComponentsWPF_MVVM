@@ -6,9 +6,9 @@ using CarComponentsWPF.Models;
 
 namespace CarComponentsWPF.Services.DataServices
 {
-    public class ManufacterDataService : GenericDataService<Manufacter>
+    public class ProviderDataService : GenericDataService<Provider>
     {
-        public override IEnumerable<Manufacter> GetWithFilter(Dictionary<string, string> filterDictionary)
+        public override IEnumerable<Provider> GetWithFilter(Dictionary<string, string> filterDictionary)
         {
             throw new NotImplementedException();
         }

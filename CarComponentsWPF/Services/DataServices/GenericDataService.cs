@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace CarComponentsWPF.Services.DataServices
 {
-    public class GenericDataService<T> : IDataService<T> where T : class, IEntity
+    public abstract class GenericDataService<T> : IDataService<T> where T : class, IEntity
     {
         public T Create(T entity)
         {
@@ -19,6 +19,7 @@ namespace CarComponentsWPF.Services.DataServices
                return createdResult;
             }
         }
+
         public T Update(T entity)
         {
             using (CarCompDB8Entities context = new CarCompDB8Entities())
@@ -62,5 +63,6 @@ namespace CarComponentsWPF.Services.DataServices
             }
         }
 
+        public abstract IEnumerable<T> GetWithFilter(Dictionary<string, string> filterDictionary);
     }
 }

@@ -22,12 +22,35 @@ namespace CarComponentsWPF.ViewModels
 
         public ICommand UpdateViewCommand { get; set; }
 
+
         public MainViewModel()
         {
             UpdateViewCommand = new UpdateViewCommand(this);
+            //SelectedViewModel2 = new AccountViewModel();
         }
 
 
 
+
+
+
+
+
+
+
+        private BaseViewModel _selectedViewModel2;
+        public BaseViewModel SelectedViewModel2
+        {
+            get { return _selectedViewModel2; }
+            set
+            {
+                OnPropertyChanged(ref _selectedViewModel2, value);
+            }
+        }
+
+        private bool _isVisible;
+        public bool IsVisible { get => _isVisible; set { OnPropertyChanged(ref _isVisible, value); OnPropertyChanged(nameof(IsNotVisible)); } }
+
+        public bool IsNotVisible { get => !IsVisible; }
     }
 }
