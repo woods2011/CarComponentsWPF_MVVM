@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CarComponentsWPF.ViewModels
 {
-    public abstract class BaseViewModel : INotifyPropertyChanged, IDataErrorInfo
+    public abstract class BaseViewModel : INotifyPropertyChanged, IDataErrorInfo, IDisposable
     {
         protected BaseViewModel()
         {
@@ -45,6 +45,10 @@ namespace CarComponentsWPF.ViewModels
             backingField = value;
             OnPropertyChanged(propertyName);
             return true;
+        }
+
+        public virtual void Dispose()
+        {
         }
 
 

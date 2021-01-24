@@ -141,12 +141,13 @@
     <Compile Include="Services\DataServices\ManufacterDataService.cs" />
     <Compile Include="ViewModels\AccountViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
-    <Compile Include="ViewModels\EntityViewModel.cs" />
+    <Compile Include="ViewModels\EntitiesViewModels\CreateViewModels\CreateEntityViewModel.cs" />
+    <Compile Include="ViewModels\EntitiesViewModels\EntityViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
-    <Compile Include="ViewModels\ManufacterViewModel.cs" />
+    <Compile Include="ViewModels\EntitiesViewModels\ManufacterViewModel.cs" />
     <Compile Include="ViewModels\MessageViewModel.cs" />
-    <Compile Include="Views\ManufacterView.xaml.cs">
+    <Compile Include="Views\EntitiesViews\ManufacterView.xaml.cs">
       <DependentUpon>ManufacterView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AccountView.xaml.cs">
@@ -169,7 +170,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\ManufacterView.xaml">
+    <Page Include="Views\EntitiesViews\ManufacterView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -235,6 +236,11 @@
   <ItemGroup>
     <Folder Include="Controls\" />
     <Folder Include="Styles\" />
+    <Folder Include="ViewModels\EntitiesViewModels\DeleteViewModels\" />
+    <Folder Include="ViewModels\EntitiesViewModels\UpdateViewModels\" />
+    <Folder Include="Views\EntitiesViews\CreateViews\" />
+    <Folder Include="Views\EntitiesViews\DeleteViews\" />
+    <Folder Include="Views\EntitiesViews\UpdateViews\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -20,6 +20,10 @@ namespace CarComponentsWPF.ViewModels
         protected readonly ICollectionView _entitiesCollectionView;
         private string _entitiesSearchQuery = string.Empty;
 
+        private ICRUDViewModel _createEntityViewModel = null;
+        private ICRUDViewModel _updateEntityViewModel = null;
+        private ICRUDViewModel _removeEntityViewModel = null;
+
         public EntityViewModel(IDataService<TEntity> service, ObservableCollection<TEntity> entities) : base()
         {
             Entities = entities;
@@ -72,7 +76,7 @@ namespace CarComponentsWPF.ViewModels
                 Entities.Add(entity);
         }
 
-        private void GetAllEntities()
+        protected void GetAllEntities()
         {
             Console.WriteLine("GetAllEntities");
             Entities.Clear();
@@ -85,12 +89,19 @@ namespace CarComponentsWPF.ViewModels
             }
         }
 
-        private void CreateEntity()
+        protected abstract void CreateEntity();
+        private void CreateEntity(ICRUDViewModel cRUDViewModel)
         {
-            
+            _createEntityViewModel = cRUDViewModel;
+            _createEntityViewModel.CRUDcompleteNotify += CreateHandler;
         }
 
-        private void UpdateEntity()
+        private void CreateHandler(object sender, CRUDOperationResultEventArgs e)
+        {
+            _createEntityViewModel = null;
+        }
+
+        protected void UpdateEntity()
         {
             int? id = SelectedEntity?.id;
             if (id.HasValue)
@@ -99,7 +110,7 @@ namespace CarComponentsWPF.ViewModels
             }
         }
 
-        private void DeleteEntity()
+        protected void DeleteEntity()
         {
             int? id = SelectedEntity?.id;
             if (id.HasValue)
