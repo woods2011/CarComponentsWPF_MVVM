@@ -38,8 +38,8 @@ namespace CarComponentsWPF.ViewModels
 
 
 
-        private BaseViewModel _selectedViewModel2;
-        public BaseViewModel SelectedViewModel2
+        private object _selectedViewModel2;
+        public object SelectedViewModel2
         {
             get { return _selectedViewModel2; }
             set

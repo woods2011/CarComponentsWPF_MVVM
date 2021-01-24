@@ -15,22 +15,77 @@ namespace CarComponentsWPF.ViewModels
 {
     public abstract class EntityViewModel<TEntity> : BaseViewModel where TEntity : class, IEntity
     {
-        private TEntity _selectedEntity;
-        protected IDataService<TEntity> _dataService;
+        protected readonly IDataService<TEntity> _dataService;
         protected readonly ICollectionView _entitiesCollectionView;
         private string _entitiesSearchQuery = string.Empty;
+        private TEntity _selectedEntity;
 
-        private ICRUDViewModel _createEntityViewModel = null;
-        private ICRUDViewModel _updateEntityViewModel = null;
-        private ICRUDViewModel _removeEntityViewModel = null;
+        private ICRUDViewModel _messageViewModel;
+        private ICRUDViewModel _createEntityViewModel;
+        private ICRUDViewModel _updateEntityViewModel;
+        private ICRUDViewModel _deleteEntityViewModel;
 
         public EntityViewModel(IDataService<TEntity> service, ObservableCollection<TEntity> entities) : base()
         {
+            _dataService = service;
             Entities = entities;
             _entitiesCollectionView = CollectionViewSource.GetDefaultView(Entities);
             _entitiesCollectionView.Filter = SearchEntities;
-            _dataService = service;
+
+
+            CreateEntityViewModel = null;
+            UpdateEntityViewModel = null;
+            DeleteEntityViewModel = null;
         }
+
+        public ICRUDViewModel MessageViewModel { get => _messageViewModel; private set { OnPropertyChanged(ref _messageViewModel, value); OnPropertyChanged(nameof(IsMessageVMactive)); } }
+        public ICRUDViewModel CreateEntityViewModel
+        {
+            get => _createEntityViewModel;
+            private set
+            {
+                if (CreateEntityViewModel != null)
+                    CreateEntityViewModel.CRUDcompleteNotify -= CreateHandler;
+                OnPropertyChanged(ref _createEntityViewModel, value);
+                OnPropertyChanged(nameof(IsCreateVMactive));
+                OnPropertyChanged(nameof(IsGeneralVMactive));
+                if (CreateEntityViewModel != null)
+                    CreateEntityViewModel.CRUDcompleteNotify += CreateHandler;
+            }
+        }
+        public ICRUDViewModel UpdateEntityViewModel
+        {
+            get => _updateEntityViewModel;
+            private set
+            {
+                if (UpdateEntityViewModel != null)
+                    UpdateEntityViewModel.CRUDcompleteNotify -= UpdateHandler;
+                OnPropertyChanged(ref _updateEntityViewModel, value);
+                OnPropertyChanged(nameof(IsUpdateVMactive));
+                OnPropertyChanged(nameof(IsGeneralVMactive));
+                if (UpdateEntityViewModel != null)
+                    UpdateEntityViewModel.CRUDcompleteNotify += UpdateHandler;
+            }
+        }
+        public ICRUDViewModel DeleteEntityViewModel
+        {
+            get => _deleteEntityViewModel;
+            private set
+            {
+                if (DeleteEntityViewModel != null)
+                    DeleteEntityViewModel.CRUDcompleteNotify -= DeleteHandler;
+                OnPropertyChanged(ref _deleteEntityViewModel, value);
+                OnPropertyChanged(nameof(IsDeleteVMactive));
+                OnPropertyChanged(nameof(IsGeneralVMactive));
+                if (DeleteEntityViewModel != null)
+                    DeleteEntityViewModel.CRUDcompleteNotify += DeleteHandler;
+            }
+        }
+        public bool IsMessageVMactive { get => MessageViewModel != null; }
+        public bool IsCreateVMactive { get => CreateEntityViewModel != null; }
+        public bool IsUpdateVMactive { get => UpdateEntityViewModel != null; }
+        public bool IsDeleteVMactive { get => DeleteEntityViewModel != null; }
+        public bool IsGeneralVMactive { get => !(IsCreateVMactive || IsUpdateVMactive || IsDeleteVMactive); }
 
         protected abstract bool SearchEntities(object obj);
 
@@ -66,7 +121,7 @@ namespace CarComponentsWPF.ViewModels
 
 
         protected abstract void GetWithFilterEntities();
-        
+
         protected void GetWithFilterEntities(Dictionary<string, string> filterDictionary)
         {
             Entities.Clear();
@@ -90,42 +145,169 @@ namespace CarComponentsWPF.ViewModels
         }
 
         protected abstract void CreateEntity();
-        private void CreateEntity(ICRUDViewModel cRUDViewModel)
+        protected void CreateEntity(ICRUDViewModel cRUDViewModel)
         {
-            _createEntityViewModel = cRUDViewModel;
-            _createEntityViewModel.CRUDcompleteNotify += CreateHandler;
+            CreateEntityViewModel = cRUDViewModel;
+        }
+        protected void CreateHandler(object sender, CRUDOperationResultEventArgs result)
+        {
+            //var cVMcur = CreateEntityViewModel;
+            //if (cVMcur != null)
+            //{
+            //    cVMcur.CRUDcompleteNotify -= CreateHandler;
+            //    CreateEntityViewMode = null;
+            //}
+            //return;
+
+            //На всякий случай так
+
+            var cVMcur = CreateEntityViewModel;
+            var cVM = sender as ICRUDViewModel;
+
+            if (cVM != null)
+            {
+                if (cVM != cVMcur)
+                    Console.WriteLine("problems");
+                cVM.CRUDcompleteNotify -= CreateHandler;
+            }
+
+            CreateEntityViewModel = null;
+
+
+            if (result.CRUDResult.HasValue)
+            {
+                if (result.CRUDResult.Value)
+                {
+                    TEntity entity = result.ResultEntity as TEntity;
+                    if (entity != null)
+                        Entities.Add(entity);
+                }
+                else
+                {
+                    string error = result.ErrorMessage;
+                    if (!String.IsNullOrEmpty(error))
+                        Console.WriteLine(error);           //Переделать
+                }
+            }
         }
 
-        private void CreateHandler(object sender, CRUDOperationResultEventArgs e)
-        {
-            _createEntityViewModel = null;
-        }
-
-        protected void UpdateEntity()
+        protected abstract void UpdateEntity();
+        protected void UpdateEntity(ICRUDViewModel cRUDViewModel)
         {
             int? id = SelectedEntity?.id;
             if (id.HasValue)
             {
+                UpdateEntityViewModel = cRUDViewModel;
+                UpdateEntityViewModel.CRUDcompleteNotify += DeleteHandler;
+            }
+        }
+        protected void UpdateHandler(object sender, CRUDOperationResultEventArgs result)
+        {
+            var cVMcur = UpdateEntityViewModel;
+            var cVM = sender as ICRUDViewModel;
 
+            if (cVM != null)
+            {
+                if (cVM != cVMcur)
+                    Console.WriteLine("problems");
+                cVM.CRUDcompleteNotify -= UpdateHandler;
+            }
+
+            UpdateEntityViewModel = null;
+
+
+            if (result.CRUDResult.HasValue)
+            {
+                if (result.CRUDResult.Value)
+                {
+                    TEntity entity = result.ResultEntity as TEntity;
+                    if (entity != null)
+                    {
+                        TEntity oldEntity = Entities.FirstOrDefault(p => p.id == entity.id);
+                        if (oldEntity != null)
+                        {
+                            Entities.Add(entity);
+                            if (SelectedEntity == oldEntity)
+                                SelectedEntity = entity;
+                            Entities.Remove(oldEntity);
+                        }
+                    }
+                }
+                else
+                {
+                    string error = result.ErrorMessage;
+                    if (!String.IsNullOrEmpty(error))
+                        Console.WriteLine(error);           //Переделать
+                }
             }
         }
 
-        protected void DeleteEntity()
+        protected abstract void DeleteEntity();
+        protected void DeleteEntity(ICRUDViewModel cRUDViewModel)
         {
             int? id = SelectedEntity?.id;
             if (id.HasValue)
             {
+                DeleteEntityViewModel = cRUDViewModel;
+                DeleteEntityViewModel.CRUDcompleteNotify += DeleteHandler;
+            }
+        }
+        protected void DeleteHandler(object sender, CRUDOperationResultEventArgs result)
+        {
+            var cVMcur = DeleteEntityViewModel;
+            var cVM = sender as ICRUDViewModel;
 
+            if (cVM != null)
+            {
+                if (cVM != cVMcur)
+                    Console.WriteLine("problems");
+                cVM.CRUDcompleteNotify -= DeleteHandler;
+            }
+
+            DeleteEntityViewModel = null;
+
+
+            if (result.CRUDResult.HasValue)
+            {
+                if (result.CRUDResult.Value)
+                {
+                    int? id = result.ResultEntity?.id;
+                    if (id.HasValue)
+                    {
+                        TEntity entity = Entities.FirstOrDefault(p => p.id == id);
+                        if (entity != null)
+                        {
+                            if (SelectedEntity == entity)
+                                SelectedEntity = null;
+                            Entities.Remove(entity);
+                        }
+                    }
+                }
+                else
+                {
+                    string error = result.ErrorMessage;
+                    if (!String.IsNullOrEmpty(error))
+                        Console.WriteLine(error);           //Переделать
+                }
             }
         }
 
 
 
+
+        public override void Dispose()
+        {
+            CreateEntityViewModel = null;
+            UpdateEntityViewModel = null;
+            DeleteEntityViewModel = null;
+            base.Dispose();
+        }
 
 
         public override bool IsValid => true;
         public override string this[string columnName] => String.Empty;
         public override string Error => String.Empty;
+
     }
 }
 

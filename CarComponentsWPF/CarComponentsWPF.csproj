@@ -141,6 +141,7 @@
     <Compile Include="Services\DataServices\ManufacterDataService.cs" />
     <Compile Include="ViewModels\AccountViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\EntitiesViewModels\ICRUDViewModel.cs" />
     <Compile Include="ViewModels\EntitiesViewModels\CreateViewModels\CreateEntityViewModel.cs" />
     <Compile Include="ViewModels\EntitiesViewModels\EntityViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />

@@ -15,30 +15,28 @@ namespace CarComponentsWPF.ViewModels
 {
     public interface ICRUDViewModel : IDisposable
     {
-        CRUDoperationTypes CRUDType { get; }
+        //CRUDoperationTypes CRUDType { get; }
 
         event CRUDOperationResultEventHandler CRUDcompleteNotify;
     }
 
-    public enum CRUDoperationTypes
-    {
-        Create,
-        Update,
-        Delete
-    }
+    //public enum CRUDoperationTypes
+    //{
+    //    Create,
+    //    Update,
+    //    Delete
+    //}
 
     public class CRUDOperationResultEventArgs : EventArgs
     {
-        public CRUDOperationResultEventArgs(bool? cRUDResult, CRUDoperationTypes? cRUDType, IEntity resultEntity, string errorMessage)
+        public CRUDOperationResultEventArgs(bool? cRUDResult, IEntity resultEntity, string errorMessage)
         {
             CRUDResult = cRUDResult;
-            CRUDType = cRUDType;
             ResultEntity = resultEntity;
             ErrorMessage = errorMessage;
         }
 
         public bool? CRUDResult { get; }
-        public CRUDoperationTypes? CRUDType { get; }
         public string ErrorMessage { get; }
         public IEntity ResultEntity { get; }
     }

@@ -27,7 +27,7 @@ namespace CarComponentsWPF.ViewModels
 
                 return manufacter.Name.ToLower().Contains(searchQueLow) ||
                     manufacter.Contry.ToLower().Contains(searchQueLow);
-            }
+            }            
 
             return false;
         }
@@ -36,6 +36,11 @@ namespace CarComponentsWPF.ViewModels
         {
             Console.WriteLine("GetWithFIlter");
             //throw new NotImplementedException();
+        }
+
+        protected override void CreateEntity()
+        {
+            throw new NotImplementedException();
         }
     }
 }

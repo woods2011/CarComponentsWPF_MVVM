@@ -15,8 +15,6 @@ namespace CarComponentsWPF.ViewModels
 {
     public abstract class CreateEntityViewModel<TEntity> : BaseViewModel, ICRUDViewModel where TEntity : class, IEntity
     {
-        public CRUDoperationTypes CRUDType { get; } = CRUDoperationTypes.Create;
-
         public event CRUDOperationResultEventHandler CRUDcompleteNotify;
 
         protected IDataService<TEntity> _dataService;
@@ -48,9 +46,12 @@ namespace CarComponentsWPF.ViewModels
             string errorMessage;
 
             bool isCreated = TryCreateEntity(out createdEntity, out errorMessage);
-            CRUDcompleteNotify?.Invoke(this, new CRUDOperationResultEventArgs(isCreated, CRUDType, createdEntity, errorMessage));
+            CRUDcompleteNotify?.Invoke(this, new CRUDOperationResultEventArgs(isCreated, createdEntity, errorMessage));
         }
-        
+
+
+
+        //public CRUDoperationTypes CRUDType { get; } = CRUDoperationTypes.Create;
         //public override bool IsValid => true;
         //public override string this[string columnName] => String.Empty;
         //public override string Error => String.Empty;
