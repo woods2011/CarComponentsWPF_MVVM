@@ -60,3 +60,5 @@ C:\Users\arter\source\repos\CarComponentsWPF\CarComponentsWPF_MVVM\CarComponents
 C:\Users\arter\source\repos\CarComponentsWPF\CarComponentsWPF_MVVM\CarComponentsWPF\obj\Debug\CarComponentsWPF.csprojAssemblyReference.cache
 C:\Users\arter\source\repos\CarComponentsWPF\CarComponentsWPF_MVVM\CarComponentsWPF\obj\Debug\Views\EntitiesViews\ManufacterView.g.cs
 C:\Users\arter\source\repos\CarComponentsWPF\CarComponentsWPF_MVVM\CarComponentsWPF\obj\Debug\Views\EntitiesViews\ManufacterView.baml
+C:\Users\arter\source\repos\CarComponentsWPF\CarComponentsWPF_MVVM\CarComponentsWPF\obj\Debug\Views\EntitiesViews\CreateViews\CreateManufacterView.g.cs
+C:\Users\arter\source\repos\CarComponentsWPF\CarComponentsWPF_MVVM\CarComponentsWPF\obj\Debug\Views\EntitiesViews\CreateViews\CreateManufacterView.baml

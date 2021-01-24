@@ -141,6 +141,9 @@
     <Compile Include="Services\DataServices\ManufacterDataService.cs" />
     <Compile Include="ViewModels\AccountViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\EntitiesViewModels\CreateViewModels\CreateManufacterViewModel.cs" />
+    <Compile Include="ViewModels\EntitiesViewModels\DeleteViewModels\DeleteEntityViewModel.cs" />
+    <Compile Include="ViewModels\EntitiesViewModels\UpdateViewModels\UpdateEntityViewModel.cs" />
     <Compile Include="ViewModels\EntitiesViewModels\ICRUDViewModel.cs" />
     <Compile Include="ViewModels\EntitiesViewModels\CreateViewModels\CreateEntityViewModel.cs" />
     <Compile Include="ViewModels\EntitiesViewModels\EntityViewModel.cs" />
@@ -148,6 +151,9 @@
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\EntitiesViewModels\ManufacterViewModel.cs" />
     <Compile Include="ViewModels\MessageViewModel.cs" />
+    <Compile Include="Views\EntitiesViews\CreateViews\CreateManufacterView.xaml.cs">
+      <DependentUpon>CreateManufacterView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EntitiesViews\ManufacterView.xaml.cs">
       <DependentUpon>ManufacterView.xaml</DependentUpon>
     </Compile>
@@ -171,6 +177,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\EntitiesViews\CreateViews\CreateManufacterView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\EntitiesViews\ManufacterView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -237,9 +247,6 @@
   <ItemGroup>
     <Folder Include="Controls\" />
     <Folder Include="Styles\" />
-    <Folder Include="ViewModels\EntitiesViewModels\DeleteViewModels\" />
-    <Folder Include="ViewModels\EntitiesViewModels\UpdateViewModels\" />
-    <Folder Include="Views\EntitiesViews\CreateViews\" />
     <Folder Include="Views\EntitiesViews\DeleteViews\" />
     <Folder Include="Views\EntitiesViews\UpdateViews\" />
   </ItemGroup>

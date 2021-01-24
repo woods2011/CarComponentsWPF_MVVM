@@ -10,11 +10,16 @@
         <DataTemplate DataType="{x:Type viewmodels:HomeViewModel}">
             <views:HomeView/>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodels:ManufacterViewModel}">
-            <views:ManufacterView/>
-        </DataTemplate>
         <DataTemplate DataType="{x:Type viewmodels:AccountViewModel}">
             <views:AccountView/>
         </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type viewmodels:ManufacterViewModel}">
+            <views:ManufacterView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:CreateManufacterViewModel}">
+            <views:CreateManufacterView/>
+        </DataTemplate>
+        
     </Application.Resources>
 </Application>

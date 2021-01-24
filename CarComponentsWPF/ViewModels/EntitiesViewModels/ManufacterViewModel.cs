@@ -40,6 +40,16 @@ namespace CarComponentsWPF.ViewModels
 
         protected override void CreateEntity()
         {
+            CreateEntity(new CreateManufacterViewModel(_dataService, new Manufacter()));
+        }
+
+        protected override void UpdateEntity()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void DeleteEntity()
+        {
             throw new NotImplementedException();
         }
     }

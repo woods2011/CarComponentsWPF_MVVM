@@ -13,14 +13,14 @@ using System.Collections.ObjectModel;
 
 namespace CarComponentsWPF.ViewModels
 {
-    public abstract class CreateEntityViewModel<TEntity> : BaseViewModel, ICRUDViewModel where TEntity : class, IEntity
+    public abstract class UpdateEntityViewModel<TEntity> : BaseViewModel, ICRUDViewModel where TEntity : class, IEntity
     {
         public event CRUDOperationResultEventHandler CRUDcompleteNotify;
 
         protected IDataService<TEntity> _dataService;
         protected readonly TEntity _entity;
 
-        public CreateEntityViewModel(IDataService<TEntity> service, TEntity entity) : base()
+        public UpdateEntityViewModel(IDataService<TEntity> service, TEntity entity) : base()
         {
             _dataService = service;
             _entity = entity;
@@ -29,7 +29,7 @@ namespace CarComponentsWPF.ViewModels
 
         public ICommand BackToListEntitiesCommand => new ActionCommand(p => BackToListEntities());
 
-        public ICommand CreateEntityCommand => new ActionCommand(p => CreateEntity(), p => IsValid);
+        public ICommand CreateEntityCommand => new ActionCommand(p => UpdateEntity(), p => IsValid);
 
 
 
@@ -38,26 +38,26 @@ namespace CarComponentsWPF.ViewModels
             CRUDcompleteNotify?.Invoke(this, new CRUDOperationResultEventArgs(null, null, null));
         }
 
-        protected void CreateEntity()
+        protected void UpdateEntity()
         {
             TEntity entity = _entity;
 
-            bool isCreated = true;
-            TEntity createdEntity;
+            bool isUpdated = true;
+            TEntity updatedEntity;
             string errorMessage = String.Empty;
 
             try
             {
-                createdEntity = _dataService.Create(entity);
+                updatedEntity = _dataService.Update(entity);
             }
             catch (Exception ex)
             {
-                isCreated = false;
-                createdEntity = null;
+                isUpdated = false;
+                updatedEntity = null;
                 errorMessage = ex.Message;
             }
 
-            CRUDcompleteNotify?.Invoke(this, new CRUDOperationResultEventArgs(isCreated, createdEntity, errorMessage));
+            CRUDcompleteNotify?.Invoke(this, new CRUDOperationResultEventArgs(isUpdated, updatedEntity, errorMessage));
         }
 
 

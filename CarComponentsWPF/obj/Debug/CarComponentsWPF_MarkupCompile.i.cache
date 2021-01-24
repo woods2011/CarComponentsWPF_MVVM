@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\arter\source\repos\CarComponentsWPF\CarComponentsWPF_MVVM\CarComponentsWPF\App.xaml
-4470955266
+51842804747
 2-1891498201
-46-561208138
+50846620816
 23-1921034726
-MainWindow.xaml;Views\EntitiesViews\ManufacterView.xaml;Views\AccountView.xaml;Views\HomeView.xaml;
+MainWindow.xaml;Views\EntitiesViews\CreateViews\CreateManufacterView.xaml;Views\EntitiesViews\ManufacterView.xaml;Views\AccountView.xaml;Views\HomeView.xaml;
 
-False
+True
 
