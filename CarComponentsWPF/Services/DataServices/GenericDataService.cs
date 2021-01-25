@@ -76,7 +76,7 @@ namespace CarComponentsWPF.Services.DataServices
 
 //try
 //{
-context.SaveChanges();
+       //context.SaveChanges();
 //}
 //catch (DbUpdateException ex)
 //{
