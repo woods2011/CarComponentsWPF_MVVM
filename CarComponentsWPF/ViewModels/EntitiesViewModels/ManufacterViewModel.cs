@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
+using System.ComponentModel;
 
 namespace CarComponentsWPF.ViewModels
 {
@@ -13,7 +15,14 @@ namespace CarComponentsWPF.ViewModels
     {
         public ManufacterViewModel() : base(new ManufacterDataService(), new ObservableCollection<Manufacter>())
         {
+            var a = new SortDescription(nameof(Manufacter.Contry), ListSortDirection.Ascending);
 
+            _entitiesCollectionView.GroupDescriptions.Add(new PropertyGroupDescription(nameof(Manufacter.Contry)));
+            _entitiesCollectionView.SortDescriptions.Add(a);
+            _entitiesCollectionView.SortDescriptions.Add(new SortDescription(nameof(Manufacter.Name), ListSortDirection.Descending));
+
+            _entitiesCollectionView.SortDescriptions.Remove(a);
+            //_entitiesCollectionView.SortDescriptions.Add(a);
         }
 
 

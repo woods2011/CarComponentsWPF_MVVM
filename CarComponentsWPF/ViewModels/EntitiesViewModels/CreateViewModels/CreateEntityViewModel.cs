@@ -54,7 +54,7 @@ namespace CarComponentsWPF.ViewModels
             {
                 isCreated = false;
                 createdEntity = null;
-                errorMessage = ex.Message;
+                errorMessage = ex.Message + "\nВнутренне исключение: " + ex?.InnerException?.InnerException?.Message ?? String.Empty;
             }
 
             CRUDcompleteNotify?.Invoke(this, new CRUDOperationResultEventArgs(isCreated, createdEntity, errorMessage));

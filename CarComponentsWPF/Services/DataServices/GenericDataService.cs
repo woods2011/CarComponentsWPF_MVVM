@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Linq;
+using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Validation;
 
 namespace CarComponentsWPF.Services.DataServices
 {
@@ -13,10 +15,12 @@ namespace CarComponentsWPF.Services.DataServices
         {
             using (CarCompDB8Entities context = new CarCompDB8Entities())
             {
-               var createdResult = context.Set<T>().Add(entity);
-               context.SaveChanges();
+                string exceptionMessage = String.Empty;
 
-               return createdResult;
+                T createdResult = context.Set<T>().Add(entity);
+                context.SaveChanges();
+
+                return createdResult;
             }
         }
 
@@ -66,3 +70,35 @@ namespace CarComponentsWPF.Services.DataServices
         public abstract IEnumerable<T> GetWithFilter(Dictionary<string, string> filterDictionary);
     }
 }
+
+
+
+
+//try
+//{
+context.SaveChanges();
+//}
+//catch (DbUpdateException ex)
+//{
+//    throw new Exception(ex.Message + "\nВнутренне исключение: "+ ex.InnerException.InnerException.Message);
+//}
+//catch (DbUpdateConcurrencyException ex)
+//{
+//    exceptionMessage += ex.Message;
+//    Console.WriteLine(exceptionMessage.Length);
+//}
+//catch (DbUpdateException ex)
+//{
+//    exceptionMessage += ex.Message;
+//    Console.WriteLine(exceptionMessage.Length);
+//}
+//catch (DbEntityValidationException ex)
+//{
+//    exceptionMessage += ex.Message;
+//    Console.WriteLine(exceptionMessage.Length);
+//}
+//finally
+//{
+//    if (!String.IsNullOrEmpty(exceptionMessage))
+//        throw new Exception(exceptionMessage);
+//}
