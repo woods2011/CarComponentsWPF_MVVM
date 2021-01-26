@@ -211,14 +211,14 @@ namespace CarComponentsWPF.ViewModels
             //}
             //return;
 
-            //На всякий случай так
+            //На всякий случай
 
             var cVMcur = CreateEntityViewModel;
 
             if (sender is ICRUDViewModel cVM)
             {
                 if (cVM != cVMcur)
-                    Console.WriteLine("problems");
+                    Console.WriteLine("problemsCreate");
                 cVM.CRUDcompleteNotify -= CreateHandler;
             }
 
@@ -247,8 +247,7 @@ namespace CarComponentsWPF.ViewModels
             int? id = SelectedEntity?.id;
             if (id.HasValue)
             {
-                UpdateEntityViewModel = cRUDViewModel;
-                UpdateEntityViewModel.CRUDcompleteNotify += DeleteHandler;
+                UpdateEntityViewModel = cRUDViewModel; 
             }
         }
         protected void UpdateHandler(object sender, CRUDOperationResultEventArgs result)
@@ -258,7 +257,7 @@ namespace CarComponentsWPF.ViewModels
             if (sender is ICRUDViewModel cVM)
             {
                 if (cVM != cVMcur)
-                    Console.WriteLine("problems");
+                    Console.WriteLine("problemsUpdate");
                 cVM.CRUDcompleteNotify -= UpdateHandler;
             }
 
@@ -297,7 +296,6 @@ namespace CarComponentsWPF.ViewModels
             if (id.HasValue)
             {
                 DeleteEntityViewModel = cRUDViewModel;
-                DeleteEntityViewModel.CRUDcompleteNotify += DeleteHandler;
             }
         }
         protected void DeleteHandler(object sender, CRUDOperationResultEventArgs result)
@@ -307,7 +305,7 @@ namespace CarComponentsWPF.ViewModels
             if (sender is ICRUDViewModel cVM)
             {
                 if (cVM != cVMcur)
-                    Console.WriteLine("problems");
+                    Console.WriteLine("problemsDelete");
                 cVM.CRUDcompleteNotify -= DeleteHandler;
             }
 

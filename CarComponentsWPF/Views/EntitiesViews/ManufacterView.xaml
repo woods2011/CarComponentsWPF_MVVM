@@ -132,6 +132,9 @@
 
         <ScrollViewer Grid.Row="0"  Content="{Binding CreateEntityViewModel}" VerticalScrollBarVisibility="Auto"
             Visibility="{Binding IsCreateVMactive, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+        <ScrollViewer Grid.Row="0"  Content="{Binding DeleteEntityViewModel}" VerticalScrollBarVisibility="Auto"
+            Visibility="{Binding IsDeleteVMactive, Converter={StaticResource BooleanToVisibilityConverter}}"/>
     </Grid>
 
 </UserControl>

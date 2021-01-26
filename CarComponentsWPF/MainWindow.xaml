@@ -44,8 +44,10 @@
 
 
         <!--Текущая ViewModel-->
-        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Margin="5" x:Name="scroll1" Grid.Row="1" Grid.Column="0"
+        <ContentControl Margin="5" x:Name="scroll1" Grid.Row="1" Grid.Column="0"
                       Content="{Binding SelectedViewModel}"/>
+        <!--<ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Margin="5" x:Name="scroll1" Grid.Row="1" Grid.Column="0"
+                      Content="{Binding SelectedViewModel}"/>-->
         <!--<ScrollViewer x:Name="scroll1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Row="1" 
                       Content="{Binding SelectedViewModel}"/>-->
         

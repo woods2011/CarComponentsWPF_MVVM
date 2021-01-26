@@ -148,6 +148,7 @@
     <Compile Include="ViewModels\AccountViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\EntitiesViewModels\CreateViewModels\CreateManufacterViewModel.cs" />
+    <Compile Include="ViewModels\EntitiesViewModels\DeleteViewModels\DeleteManufacterViewModel.cs" />
     <Compile Include="ViewModels\EntitiesViewModels\DeleteViewModels\DeleteEntityViewModel.cs" />
     <Compile Include="ViewModels\EntitiesViewModels\UpdateViewModels\UpdateEntityViewModel.cs" />
     <Compile Include="ViewModels\EntitiesViewModels\ICRUDViewModel.cs" />
@@ -157,6 +158,9 @@
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\EntitiesViewModels\ManufacterViewModel.cs" />
     <Compile Include="ViewModels\MessageViewModel.cs" />
+    <Compile Include="Views\EntitiesViews\DeleteViews\DeleteManufacterView.xaml.cs">
+      <DependentUpon>DeleteManufacterView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MessageView.xaml.cs">
       <DependentUpon>MessageView.xaml</DependentUpon>
     </Compile>
@@ -186,6 +190,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\EntitiesViews\DeleteViews\DeleteManufacterView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\MessageView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -248,7 +256,6 @@
   <ItemGroup>
     <Folder Include="Controls\" />
     <Folder Include="Styles\" />
-    <Folder Include="Views\EntitiesViews\DeleteViews\" />
     <Folder Include="Views\EntitiesViews\UpdateViews\" />
   </ItemGroup>
   <ItemGroup>

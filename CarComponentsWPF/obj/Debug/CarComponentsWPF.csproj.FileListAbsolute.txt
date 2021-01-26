@@ -64,3 +64,5 @@ C:\Users\arter\source\repos\CarComponentsWPF\CarComponentsWPF_MVVM\CarComponents
 C:\Users\arter\source\repos\CarComponentsWPF\CarComponentsWPF_MVVM\CarComponentsWPF\obj\Debug\Views\MessageView.g.cs
 C:\Users\arter\source\repos\CarComponentsWPF\CarComponentsWPF_MVVM\CarComponentsWPF\obj\Debug\Views\MessageView.baml
 C:\Users\arter\source\repos\CarComponentsWPF\CarComponentsWPF_MVVM\CarComponentsWPF\obj\Debug\CarComponentsWPF.csprojAssemblyReference.cache
+C:\Users\arter\source\repos\CarComponentsWPF\CarComponentsWPF_MVVM\CarComponentsWPF\obj\Debug\Views\EntitiesViews\DeleteViews\DeleteManufacterView.g.cs
+C:\Users\arter\source\repos\CarComponentsWPF\CarComponentsWPF_MVVM\CarComponentsWPF\obj\Debug\Views\EntitiesViews\DeleteViews\DeleteManufacterView.baml

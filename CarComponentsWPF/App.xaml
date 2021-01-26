@@ -24,6 +24,9 @@
         <DataTemplate DataType="{x:Type viewmodels:CreateManufacterViewModel}">
             <views:CreateManufacterView/>
         </DataTemplate>
-        
+        <DataTemplate DataType="{x:Type viewmodels:DeleteManufacterViewModel}">
+            <views:DeleteManufacterView/>
+        </DataTemplate>
+
     </Application.Resources>
 </Application>
