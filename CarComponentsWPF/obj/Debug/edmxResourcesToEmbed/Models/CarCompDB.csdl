@@ -231,5 +231,28 @@
       <End Role="Providers" EntitySet="Providers" />
       <End Role="ProviderComponents" EntitySet="ProviderComponents" />
     </AssociationSet>
+    <FunctionImport Name="TestProcedure1" ReturnType="Collection(CarCompDB8Model.TestProcedure1_Result)" />
+    <FunctionImport Name="TestProcedure2" ReturnType="Collection(CarCompDB8Model.TestProcedure2_Result)" />
   </EntityContainer>
+  <ComplexType Name="TestProcedure1_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="Int32" Name="id_Manuf" Nullable="false" />
+    <Property Type="Int32" Name="id_CompType" Nullable="false" />
+    <Property Type="Int32" Name="id_CarModel" Nullable="false" />
+    <Property Type="Int32" Name="PrimeCost" Nullable="false" />
+    <Property Type="Int32" Name="id1" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="TestProcedure2_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="Int32" Name="id_CarComp" Nullable="false" />
+    <Property Type="Int32" Name="id_Provider" Nullable="false" />
+    <Property Type="Int32" Name="RetailPrice" Nullable="false" />
+    <Property Type="Int32" Name="Quantity" Nullable="false" />
+    <Property Type="Int32" Name="id1" Nullable="false" />
+    <Property Type="Int32" Name="id_Manuf" Nullable="false" />
+    <Property Type="Int32" Name="id_CompType" Nullable="false" />
+    <Property Type="Int32" Name="id_CarModel" Nullable="false" />
+    <Property Type="Int32" Name="PrimeCost" Nullable="false" />
+  </ComplexType>
 </Schema>

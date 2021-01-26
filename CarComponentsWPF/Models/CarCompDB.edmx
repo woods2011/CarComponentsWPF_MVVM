@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище CarCompDB8Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище CarCompDB8Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CarModels">
           <Key>
             <PropertyRef Name="id" />
@@ -202,6 +202,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="TestProcedure1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="TestProcedure2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="Хранилище CarCompDB8ModelContainer">
           <EntitySet Name="CarModels" EntityType="Self.CarModels" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Components" EntityType="Self.Components" Schema="dbo" store:Type="Tables" />
@@ -269,8 +271,7 @@
             <End Role="ProviderComponents" EntitySet="ProviderComponents" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CarCompDB8Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -505,7 +506,30 @@
             <End Role="Providers" EntitySet="Providers" />
             <End Role="ProviderComponents" EntitySet="ProviderComponents" />
           </AssociationSet>
+          <FunctionImport Name="TestProcedure1" ReturnType="Collection(CarCompDB8Model.TestProcedure1_Result)" />
+          <FunctionImport Name="TestProcedure2" ReturnType="Collection(CarCompDB8Model.TestProcedure2_Result)" />
         </EntityContainer>
+        <ComplexType Name="TestProcedure1_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="id_Manuf" Nullable="false" />
+          <Property Type="Int32" Name="id_CompType" Nullable="false" />
+          <Property Type="Int32" Name="id_CarModel" Nullable="false" />
+          <Property Type="Int32" Name="PrimeCost" Nullable="false" />
+          <Property Type="Int32" Name="id1" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="TestProcedure2_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="id_CarComp" Nullable="false" />
+          <Property Type="Int32" Name="id_Provider" Nullable="false" />
+          <Property Type="Int32" Name="RetailPrice" Nullable="false" />
+          <Property Type="Int32" Name="Quantity" Nullable="false" />
+          <Property Type="Int32" Name="id1" Nullable="false" />
+          <Property Type="Int32" Name="id_Manuf" Nullable="false" />
+          <Property Type="Int32" Name="id_CompType" Nullable="false" />
+          <Property Type="Int32" Name="id_CarModel" Nullable="false" />
+          <Property Type="Int32" Name="PrimeCost" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -626,6 +650,35 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="TestProcedure1" FunctionName="Хранилище CarCompDB8Model.TestProcedure1">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CarCompDB8Model.TestProcedure1_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_Manuf" ColumnName="id_Manuf" />
+                <ScalarProperty Name="id_CompType" ColumnName="id_CompType" />
+                <ScalarProperty Name="id_CarModel" ColumnName="id_CarModel" />
+                <ScalarProperty Name="PrimeCost" ColumnName="PrimeCost" />
+                <ScalarProperty Name="id1" ColumnName="id1" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="TestProcedure2" FunctionName="Хранилище CarCompDB8Model.TestProcedure2">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CarCompDB8Model.TestProcedure2_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_CarComp" ColumnName="id_CarComp" />
+                <ScalarProperty Name="id_Provider" ColumnName="id_Provider" />
+                <ScalarProperty Name="RetailPrice" ColumnName="RetailPrice" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="id1" ColumnName="id1" />
+                <ScalarProperty Name="id_Manuf" ColumnName="id_Manuf" />
+                <ScalarProperty Name="id_CompType" ColumnName="id_CompType" />
+                <ScalarProperty Name="id_CarModel" ColumnName="id_CarModel" />
+                <ScalarProperty Name="PrimeCost" ColumnName="PrimeCost" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

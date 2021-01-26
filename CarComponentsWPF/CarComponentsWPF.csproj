@@ -128,6 +128,12 @@
     <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>CarCompDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TestProcedure1_Result.cs">
+      <DependentUpon>CarCompDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TestProcedure2_Result.cs">
+      <DependentUpon>CarCompDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Services\AuthenticationServices\AuthenticationService.cs" />
     <Compile Include="Services\AuthenticationServices\IAuthenticationService.cs" />
     <Compile Include="Services\AuthenticationServices\Class1.cs" />

@@ -12,6 +12,8 @@ namespace CarComponentsWPF.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class CarCompDB8Entities : DbContext
     {
@@ -36,5 +38,15 @@ namespace CarComponentsWPF.Models
         public virtual DbSet<AllCarComonentsVIEW> AllCarComonentsVIEWs { get; set; }
         public virtual DbSet<CompProviderCROSSJOIN> CompProviderCROSSJOINs { get; set; }
         public virtual DbSet<ManTypModCROSSJOIN> ManTypModCROSSJOINs { get; set; }
+    
+        public virtual ObjectResult<TestProcedure1_Result> TestProcedure1()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TestProcedure1_Result>("TestProcedure1");
+        }
+    
+        public virtual ObjectResult<TestProcedure2_Result> TestProcedure2()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TestProcedure2_Result>("TestProcedure2");
+        }
     }
 }

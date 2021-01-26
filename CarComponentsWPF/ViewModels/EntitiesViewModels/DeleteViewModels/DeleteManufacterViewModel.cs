@@ -13,20 +13,19 @@ using System.Collections.ObjectModel;
 
 namespace CarComponentsWPF.ViewModels
 {
-    public abstract class UpdateEntityViewModel<TEntity> : BaseViewModel, ICRUDViewModel where TEntity : class, IEntity
+    public abstract class DeleteEntityViewModel<TEntity> : BaseViewModel, ICRUDViewModel where TEntity : class, IEntity
     {
         public event CRUDOperationResultEventHandler CRUDcompleteNotify;
 
         protected IDataService<TEntity> _dataService;
         protected readonly TEntity _entity;
 
-        public UpdateEntityViewModel(IDataService<TEntity> service, TEntity entity) : base()
+        public DeleteEntityViewModel(IDataService<TEntity> service, TEntity entity) : base()
         {
             _dataService = service;
             _entity = entity;
-
-
         }
+
 
 
         public ICommand BackToListEntitiesCommand => new ActionCommand(p => BackToListEntities());
@@ -42,24 +41,24 @@ namespace CarComponentsWPF.ViewModels
 
         protected void UpdateEntity()
         {
-            TEntity entity = _entity;
+            int id = _entity.id;
 
-            bool isUpdated = true;
-            TEntity updatedEntity;
+            bool isDeleted;
             string errorMessage = String.Empty;
 
             try
             {
-                updatedEntity = _dataService.Update(entity);
+                isDeleted = _dataService.Delete(id);
+                if (!isDeleted)
+                    errorMessage = "Не удалось удалить экземпляр сущности";
             }
             catch (Exception ex)
             {
-                isUpdated = false;
-                updatedEntity = null;
+                isDeleted = false;
                 errorMessage = ex.Message;
             }
 
-            CRUDcompleteNotify?.Invoke(this, new CRUDOperationResultEventArgs(isUpdated, updatedEntity, errorMessage));
+            CRUDcompleteNotify?.Invoke(this, new CRUDOperationResultEventArgs(isDeleted, null, errorMessage));
         }
 
 

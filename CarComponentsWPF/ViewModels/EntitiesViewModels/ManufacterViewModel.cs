@@ -13,39 +13,72 @@ namespace CarComponentsWPF.ViewModels
 {
     public class ManufacterViewModel : EntityViewModel<Manufacter>
     {
+        private bool _isGroupCountry = false;
+        private bool _isSortCountry = false;
+        private bool _isSortName = false;
+
+
+        static ManufacterViewModel()
+        {
+            //Поля для фильтрации
+            _propForSearchList.Add(nameof(Manufacter.Name));
+            _propForSearchList.Add(nameof(Manufacter.Contry));
+        }
+
         public ManufacterViewModel() : base(new ManufacterDataService(), new ObservableCollection<Manufacter>())
         {
-            var a = new SortDescription(nameof(Manufacter.Contry), ListSortDirection.Ascending);
-
-            _entitiesCollectionView.GroupDescriptions.Add(new PropertyGroupDescription(nameof(Manufacter.Contry)));
-            _entitiesCollectionView.SortDescriptions.Add(a);
-            _entitiesCollectionView.SortDescriptions.Add(new SortDescription(nameof(Manufacter.Name), ListSortDirection.Descending));
-
-            _entitiesCollectionView.SortDescriptions.Remove(a);
-            //_entitiesCollectionView.SortDescriptions.Add(a);
         }
 
-
-
-
-        protected override bool SearchEntities(object obj)
+        public bool IsGroupCountry
         {
-            if (obj is Manufacter manufacter)
+            get => _isGroupCountry;
+            set
             {
-                var searchQueLow = EntitiesSearchQuery.ToLower();
-
-                return manufacter.Name.ToLower().Contains(searchQueLow) ||
-                    manufacter.Contry.ToLower().Contains(searchQueLow);
-            }            
-
-            return false;
+                OnPropertyChanged(ref _isGroupCountry, value);
+                if (IsGroupCountry)
+                    AddGroupDescriptor(nameof(Manufacter.Contry));
+                else
+                    RemoveGroupDescriptor(nameof(Manufacter.Contry));
+            }
         }
-
-        protected override void GetWithFilterEntities()
+        public bool IsSortCountry
         {
-            Console.WriteLine("GetWithFIlter");
-            //throw new NotImplementedException();
+            get => _isSortCountry;
+            set { 
+                OnPropertyChanged(ref _isSortCountry, value);
+                if (IsSortCountry)
+                    AddSortDescriptor(nameof(Manufacter.Contry));
+                else
+                    RemoveSortDescriptor(nameof(Manufacter.Contry));
+            }
         }
+        public bool IsSortName
+        {
+            get => _isSortName;
+            set { 
+                OnPropertyChanged(ref _isSortName, value);
+                if (IsSortName)
+                    AddSortDescriptor(nameof(Manufacter.Name));
+                else
+                    RemoveSortDescriptor(nameof(Manufacter.Name));
+            }
+        }
+
+
+        //protected override bool SearchEntities(object obj)
+        //{
+        //    if (obj is Manufacter manufacter)
+        //    {
+        //        var searchQueLow = EntitiesSearchQuery.ToLower();
+
+        //        return manufacter.Name.ToLower().Contains(searchQueLow) ||
+        //            manufacter.Contry.ToLower().Contains(searchQueLow);
+        //    }
+
+        //    return false;
+        //}
+
+        protected override void GetWithFilterEntities() { return; }
 
         protected override void CreateEntity()
         {
@@ -54,12 +87,25 @@ namespace CarComponentsWPF.ViewModels
 
         protected override void UpdateEntity()
         {
-            throw new NotImplementedException();
+            var entity = SelectedEntity;
+            if (entity != null)
+                UpdateEntity(new CreateManufacterViewModel(_dataService, entity));
         }
 
         protected override void DeleteEntity()
         {
-            throw new NotImplementedException();
+            //var entity = SelectedEntity;
+            //if (entity != null)
+            //    DeleteEntity(new CreateManufacterViewModel(_dataService, entity));
         }
     }
 }
+
+
+
+
+//public bool IsGroupCountry { get => _isGroupCountry; set => OnPropertyChanged(ref _isGroupCountry, value); }
+//public bool IsSortAscCountry { get => _isSortAscCountry; set { OnPropertyChanged(ref _isSortAscCountry, value); if (IsSortAscCountry) IsSortDescCountry = false; } }
+//public bool IsSortDescCountry { get => _isSortDescCountry; set { OnPropertyChanged(ref _isSortDescCountry, value); if (IsSortDescCountry) IsSortAscCountry = false; } }
+//public bool IsSortAscName { get => _isSortAscName; set => OnPropertyChanged(ref _isSortAscName, value); }
+//public bool IsSortDescName { get => _isSortDescName; set => OnPropertyChanged(ref _isSortDescName, value); }

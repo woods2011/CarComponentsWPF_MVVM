@@ -19,12 +19,15 @@ namespace CarComponentsWPF.ViewModels
         protected readonly ICollectionView _entitiesCollectionView;
         private string _entitiesSearchQuery = string.Empty;
         private TEntity _selectedEntity;
+        protected readonly static List<string> _propForSearchList;
 
         private ICRUDViewModel _messageViewModel;
         private ICRUDViewModel _createEntityViewModel;
         private ICRUDViewModel _updateEntityViewModel;
         private ICRUDViewModel _deleteEntityViewModel;
 
+
+        static EntityViewModel() { _propForSearchList = new List<string>(); }
         public EntityViewModel(IDataService<TEntity> service, ObservableCollection<TEntity> entities) : base()
         {
             _dataService = service;
@@ -32,11 +35,11 @@ namespace CarComponentsWPF.ViewModels
             _entitiesCollectionView = CollectionViewSource.GetDefaultView(Entities);
             _entitiesCollectionView.Filter = SearchEntities;
 
-
             CreateEntityViewModel = null;
             UpdateEntityViewModel = null;
             DeleteEntityViewModel = null;
         }
+
 
         public ICRUDViewModel MessageViewModel { get => _messageViewModel; private set { OnPropertyChanged(ref _messageViewModel, value); OnPropertyChanged(nameof(IsMessageVMactive)); } }
         public ICRUDViewModel CreateEntityViewModel
@@ -87,7 +90,56 @@ namespace CarComponentsWPF.ViewModels
         public bool IsDeleteVMactive { get => DeleteEntityViewModel != null; }
         public bool IsGeneralVMactive { get => !(IsCreateVMactive || IsUpdateVMactive || IsDeleteVMactive); }
 
-        protected abstract bool SearchEntities(object obj);
+        protected virtual bool SearchEntities(object obj)
+        {
+            if (obj is TEntity entity)
+            {
+                Type type = typeof(TEntity);
+                string searchQueLow = EntitiesSearchQuery.ToLower();
+                string propValue;
+
+                foreach (var prop in _propForSearchList)
+                {
+                    propValue = (type.GetProperty(prop).GetValue(entity) as String)?.ToLower();
+                    if (propValue?.Contains(searchQueLow) ?? false)
+                        return true;
+                }
+            }
+
+            return false;
+        }
+
+        protected void AddGroupDescriptor(string propName)
+        {
+            _entitiesCollectionView.GroupDescriptions.Add(new PropertyGroupDescription(propName));
+        }
+        protected void AddSortDescriptor(string propName)
+        {
+            _entitiesCollectionView.SortDescriptions.Add(new SortDescription(propName, ListSortDirection.Ascending));
+        }
+
+        protected void RemoveGroupDescriptor(string propName)
+        {
+            var propGroupDescr = _entitiesCollectionView.GroupDescriptions.OfType<PropertyGroupDescription>().FirstOrDefault(grd => grd.PropertyName == propName);
+            if (propGroupDescr != null)
+                _entitiesCollectionView.GroupDescriptions.Remove(propGroupDescr);
+        }
+        protected void RemoveSortDescriptor(string propName)
+        {
+            var propSortDescr = _entitiesCollectionView.SortDescriptions.FirstOrDefault(sd => sd.PropertyName == propName);
+            if (propSortDescr != null)
+                _entitiesCollectionView.SortDescriptions.Remove(propSortDescr);
+        }
+        protected void SwitchSortDescriptor(string propName)
+        {
+            var propSortDescr = _entitiesCollectionView.SortDescriptions.FirstOrDefault(sd => sd.PropertyName == propName);
+            if (propSortDescr != default)
+                propSortDescr.Direction = 1 - propSortDescr.Direction;
+                //if (propSortDescr.Direction == ListSortDirection.Ascending)
+                //    propSortDescr.Direction = ListSortDirection.Descending;
+                //else
+                //    propSortDescr.Direction = ListSortDirection.Ascending;
+        }
 
         public ObservableCollection<TEntity> Entities { get; private set; }    //Заменить на ICollection
 
@@ -162,9 +214,8 @@ namespace CarComponentsWPF.ViewModels
             //На всякий случай так
 
             var cVMcur = CreateEntityViewModel;
-            var cVM = sender as ICRUDViewModel;
 
-            if (cVM != null)
+            if (sender is ICRUDViewModel cVM)
             {
                 if (cVM != cVMcur)
                     Console.WriteLine("problems");
@@ -178,8 +229,7 @@ namespace CarComponentsWPF.ViewModels
             {
                 if (result.CRUDResult.Value)
                 {
-                    TEntity entity = result.ResultEntity as TEntity;
-                    if (entity != null)
+                    if (result.ResultEntity is TEntity entity)
                         Entities.Add(entity);
                 }
                 else
@@ -204,9 +254,8 @@ namespace CarComponentsWPF.ViewModels
         protected void UpdateHandler(object sender, CRUDOperationResultEventArgs result)
         {
             var cVMcur = UpdateEntityViewModel;
-            var cVM = sender as ICRUDViewModel;
 
-            if (cVM != null)
+            if (sender is ICRUDViewModel cVM)
             {
                 if (cVM != cVMcur)
                     Console.WriteLine("problems");
@@ -220,8 +269,7 @@ namespace CarComponentsWPF.ViewModels
             {
                 if (result.CRUDResult.Value)
                 {
-                    TEntity entity = result.ResultEntity as TEntity;
-                    if (entity != null)
+                    if (result.ResultEntity is TEntity entity)
                     {
                         TEntity oldEntity = Entities.FirstOrDefault(p => p.id == entity.id);
                         if (oldEntity != null)
@@ -255,9 +303,8 @@ namespace CarComponentsWPF.ViewModels
         protected void DeleteHandler(object sender, CRUDOperationResultEventArgs result)
         {
             var cVMcur = DeleteEntityViewModel;
-            var cVM = sender as ICRUDViewModel;
 
-            if (cVM != null)
+            if (sender is ICRUDViewModel cVM)
             {
                 if (cVM != cVMcur)
                     Console.WriteLine("problems");

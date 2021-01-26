@@ -197,6 +197,8 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="TestProcedure1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="TestProcedure2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="Хранилище CarCompDB8ModelContainer">
     <EntitySet Name="CarModels" EntityType="Self.CarModels" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Components" EntityType="Self.Components" Schema="dbo" store:Type="Tables" />
