@@ -15,6 +15,7 @@
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="id_Manuf" ColumnName="id_Manuf" />
           <ScalarProperty Name="id_CompType" ColumnName="id_CompType" />
+          <ScalarProperty Name="id_CarModel" ColumnName="id_CarModel" />
           <ScalarProperty Name="PrimeCost" ColumnName="PrimeCost" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -114,13 +115,5 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="ComponentCarModels" TypeName="CarCompDB8Model.ComponentCarModels" StoreEntitySet="ComponentCarModels">
-      <EndProperty Name="CarModels">
-        <ScalarProperty Name="id" ColumnName="id_CarModel" />
-      </EndProperty>
-      <EndProperty Name="Components">
-        <ScalarProperty Name="id" ColumnName="id_CarComp" />
-      </EndProperty>
-    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

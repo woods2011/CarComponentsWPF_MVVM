@@ -7,16 +7,6 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "CarCompDB8.dbo.ComponentCarModels" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
-  <EntityType Name="ComponentCarModels">
-    <Key>
-      <PropertyRef Name="id_CarComp" />
-      <PropertyRef Name="id_CarModel" />
-    </Key>
-    <Property Name="id_CarComp" Type="int" Nullable="false" />
-    <Property Name="id_CarModel" Type="int" Nullable="false" />
-  </EntityType>
   <EntityType Name="Components">
     <Key>
       <PropertyRef Name="id" />
@@ -24,6 +14,7 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="id_Manuf" Type="int" Nullable="false" />
     <Property Name="id_CompType" Type="int" Nullable="false" />
+    <Property Name="id_CarModel" Type="int" Nullable="false" />
     <Property Name="PrimeCost" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ComponentTypes">
@@ -136,31 +127,17 @@
     <Property Name="CompType" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="CarModel" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <Association Name="FK_ComponentCarModels_CarModels">
+  <Association Name="FK_Components_CarModels">
     <End Role="CarModels" Type="Self.CarModels" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
-    <End Role="ComponentCarModels" Type="Self.ComponentCarModels" Multiplicity="*" />
+    <End Role="Components" Type="Self.Components" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CarModels">
         <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="ComponentCarModels">
+      <Dependent Role="Components">
         <PropertyRef Name="id_CarModel" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ComponentCarModels_Components">
-    <End Role="Components" Type="Self.Components" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="ComponentCarModels" Type="Self.ComponentCarModels" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Components">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="ComponentCarModels">
-        <PropertyRef Name="id_CarComp" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -228,12 +205,6 @@
     <EntitySet Name="ProviderComponents" EntityType="Self.ProviderComponents" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Providers" EntityType="Self.Providers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="ComponentCarModels" EntityType="Self.ComponentCarModels" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [ComponentCarModels].[id_CarComp] AS [id_CarComp], 
-    [ComponentCarModels].[id_CarModel] AS [id_CarModel]
-    FROM [dbo].[ComponentCarModels] AS [ComponentCarModels]</DefiningQuery>
-    </EntitySet>
     <EntitySet Name="AllCarComonentsFromProvidersVIEW" EntityType="Self.AllCarComonentsFromProvidersVIEW" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [AllCarComonentsFromProvidersVIEW].[Manufacter] AS [Manufacter], 
@@ -272,13 +243,9 @@
     [ManTypModCROSSJOIN].[CarModel] AS [CarModel]
     FROM [dbo].[ManTypModCROSSJOIN] AS [ManTypModCROSSJOIN]</DefiningQuery>
     </EntitySet>
-    <AssociationSet Name="FK_ComponentCarModels_CarModels" Association="Self.FK_ComponentCarModels_CarModels">
+    <AssociationSet Name="FK_Components_CarModels" Association="Self.FK_Components_CarModels">
       <End Role="CarModels" EntitySet="CarModels" />
-      <End Role="ComponentCarModels" EntitySet="ComponentCarModels" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ComponentCarModels_Components" Association="Self.FK_ComponentCarModels_Components">
       <End Role="Components" EntitySet="Components" />
-      <End Role="ComponentCarModels" EntitySet="ComponentCarModels" />
     </AssociationSet>
     <AssociationSet Name="FK_Components_ComponentTypes" Association="Self.FK_Components_ComponentTypes">
       <End Role="ComponentTypes" EntitySet="ComponentTypes" />

@@ -8,7 +8,7 @@
     xmlns:viewmodels="clr-namespace:CarComponentsWPF.ViewModels"
     
     mc:Ignorable="d"
-    Title="MainWindow" Height="450" Width="909"
+    Title="MainWindow" Height="450" Width="900"
     d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel, IsDesignTimeCreatable=True}">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
@@ -17,22 +17,18 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
-            <!--<RowDefinition Height="auto"/>-->
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-
+        
         <!--Меню-->
-        <Grid Background="#FFD0E3F6"  Grid.Row="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-
-            
-            <!--<CheckBox IsChecked="{Binding IsVisible}"/>-->
-            <TextBlock Grid.Row="0" Margin="5" Text="Комплектующие автомобиля" FontSize="16"/>
-            <Menu Background="#FFD0E3F6"  Grid.Row="1" Margin="5,0,5,5" FontSize="14">
+        <!--<CheckBox IsChecked="{Binding IsVisible}"/>-->
+        <StackPanel Background="#FFD0E3F6" Orientation="Vertical" Grid.Row="0" Grid.Column="0">
+            <TextBlock Margin="5" Text="Комплектующие автомобиля" FontSize="16"/>
+            <Menu Background="#FFD0E3F6" Margin="5,0,5,5" FontSize="14">
                 <MenuItem Background="#FFB9D7F3" Header="Главная" BorderBrush="Gray" Command="{Binding UpdateViewCommand}" CommandParameter="Home"/>
                 <MenuItem Background="#FFB9D7F3" Header="Обслуживание БД" BorderBrush="Gray">
                     <MenuItem Background="#FFB9D7F3" Header="Опция 1" BorderBrush="Gray" Command="{Binding UpdateViewCommand}" CommandParameter="Account"/>
@@ -43,17 +39,21 @@
                 <MenuItem Background="#FFB9D7F3" Header="Модели авто" BorderBrush="Gray" Command="{Binding UpdateViewCommand}" CommandParameter="Account"/>
                 <MenuItem Background="#FFB9D7F3" Header="Поставщики" BorderBrush="Gray" Command="{Binding UpdateViewCommand}" CommandParameter="Account"/>
                 <MenuItem Background="#FFB9D7F3" Header="Наличие у поставщиков" BorderBrush="Gray" Command="{Binding UpdateViewCommand}" CommandParameter="Account"/>
-                </Menu>
-        </Grid>
+            </Menu>
+        </StackPanel>
+
 
         <!--Текущая ViewModel-->
-        <ScrollViewer x:Name="scroll1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Row="1" 
+        <ContentControl Margin="5" x:Name="scroll1" Grid.Row="1" Grid.Column="0"
                       Content="{Binding SelectedViewModel}"/>
+        <!--<ScrollViewer x:Name="scroll1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Row="1" 
+                      Content="{Binding SelectedViewModel}"/>-->
         
-        <!--<ScrollViewer x:Name="scroll2"  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Grid.Row="2" 
-                      Content="{Binding SelectedViewModel2}" Visibility="{Binding IsNotVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>-->
     </Grid>
 </Window>
+
+<!--<ScrollViewer x:Name="scroll2"  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Grid.Row="2" 
+                      Content="{Binding SelectedViewModel2}" Visibility="{Binding IsNotVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>-->
 
 
 

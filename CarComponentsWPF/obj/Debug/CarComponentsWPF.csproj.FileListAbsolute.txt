@@ -62,3 +62,5 @@ C:\Users\arter\source\repos\CarComponentsWPF\CarComponentsWPF_MVVM\CarComponents
 C:\Users\arter\source\repos\CarComponentsWPF\CarComponentsWPF_MVVM\CarComponentsWPF\obj\Debug\Views\EntitiesViews\ManufacterView.baml
 C:\Users\arter\source\repos\CarComponentsWPF\CarComponentsWPF_MVVM\CarComponentsWPF\obj\Debug\Views\EntitiesViews\CreateViews\CreateManufacterView.g.cs
 C:\Users\arter\source\repos\CarComponentsWPF\CarComponentsWPF_MVVM\CarComponentsWPF\obj\Debug\Views\EntitiesViews\CreateViews\CreateManufacterView.baml
+C:\Users\arter\source\repos\CarComponentsWPF\CarComponentsWPF_MVVM\CarComponentsWPF\obj\Debug\Views\MessageView.g.cs
+C:\Users\arter\source\repos\CarComponentsWPF\CarComponentsWPF_MVVM\CarComponentsWPF\obj\Debug\Views\MessageView.baml

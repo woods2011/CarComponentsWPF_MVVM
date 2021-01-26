@@ -1,30 +1,23 @@
-﻿using System;
+﻿using CarComponentsWPF.Commands;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace CarComponentsWPF.ViewModels
 {
     public class MessageViewModel : BaseViewModel
     {
         private string _message;
-        public string Message
-        {
-            get
-            {
-                return _message;
-            }
-            set
-            {
-                _message = value;
-                OnPropertyChanged(nameof(Message));
-                OnPropertyChanged(nameof(HasMessage));
-            }
-        }
+        public string Message { get => _message; set { OnPropertyChanged(ref _message, value); OnPropertyChanged(nameof(HasMessage)); } }
 
         public bool HasMessage => !string.IsNullOrEmpty(Message);
 
+
+        public ICommand OkCommand => new ActionCommand(p => Message = String.Empty);
+        //public ICommand OkCommand => new ActionCommand(p => Ok(), p => HasMessage);
 
 
 

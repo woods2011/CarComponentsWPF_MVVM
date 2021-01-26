@@ -151,6 +151,9 @@
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\EntitiesViewModels\ManufacterViewModel.cs" />
     <Compile Include="ViewModels\MessageViewModel.cs" />
+    <Compile Include="Views\MessageView.xaml.cs">
+      <DependentUpon>MessageView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EntitiesViews\CreateViews\CreateManufacterView.xaml.cs">
       <DependentUpon>CreateManufacterView.xaml</DependentUpon>
     </Compile>
@@ -177,6 +180,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\MessageView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\EntitiesViews\CreateViews\CreateManufacterView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -233,6 +240,12 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Controls\" />
+    <Folder Include="Styles\" />
+    <Folder Include="Views\EntitiesViews\DeleteViews\" />
+    <Folder Include="Views\EntitiesViews\UpdateViews\" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Models\CarCompDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CarCompDB.edmx</DependentUpon>
@@ -243,12 +256,6 @@
       <DependentUpon>CarCompDB.edmx</DependentUpon>
       <LastGenOutput>CarCompDB.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controls\" />
-    <Folder Include="Styles\" />
-    <Folder Include="Views\EntitiesViews\DeleteViews\" />
-    <Folder Include="Views\EntitiesViews\UpdateViews\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -4,23 +4,23 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="7f37779231024466acebf83c4055b713" Name="Diagram1">
-        <EntityTypeShape EntityType="CarCompDB8Model.CarModel" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+      <Diagram DiagramId="d0d40cc2f04d45a8a8636a01250127b2" Name="Diagram1">
+        <EntityTypeShape EntityType="CarCompDB8Model.CarModel" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="CarCompDB8Model.Component" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="CarCompDB8Model.ComponentType" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CarCompDB8Model.Manufacter" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="CarCompDB8Model.ProviderComponent" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="CarCompDB8Model.Provider" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CarCompDB8Model.sysdiagram" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarCompDB8Model.ComponentType" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarCompDB8Model.Manufacter" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarCompDB8Model.ProviderComponent" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarCompDB8Model.Provider" Width="1.5" PointX="4" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarCompDB8Model.sysdiagram" Width="1.5" PointX="10" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CarCompDB8Model.AllCarComonentsFromProvidersVIEW" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CarCompDB8Model.AllCarComonentsVIEW" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CarCompDB8Model.CompProviderCROSSJOIN" Width="1.5" PointX="5.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CarCompDB8Model.ManTypModCROSSJOIN" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+        <AssociationConnector Association="CarCompDB8Model.FK_Components_CarModels" ManuallyRouted="false" />
         <AssociationConnector Association="CarCompDB8Model.FK_Components_ComponentTypes" ManuallyRouted="false" />
         <AssociationConnector Association="CarCompDB8Model.FK_Components_Manufacters" ManuallyRouted="false" />
         <AssociationConnector Association="CarCompDB8Model.FK_ProviderComponents_Components" ManuallyRouted="false" />
         <AssociationConnector Association="CarCompDB8Model.FK_ProviderComponents_Providers" ManuallyRouted="false" />
-        <AssociationConnector Association="CarCompDB8Model.ComponentCarModels" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

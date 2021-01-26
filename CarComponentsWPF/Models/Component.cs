@@ -18,19 +18,18 @@ namespace CarComponentsWPF.Models
         public Component()
         {
             this.ProviderComponents = new HashSet<ProviderComponent>();
-            this.CarModels = new HashSet<CarModel>();
         }
     
         public int id { get; set; }
         public int id_Manuf { get; set; }
         public int id_CompType { get; set; }
+        public int id_CarModel { get; set; }
         public int PrimeCost { get; set; }
     
+        public virtual CarModel CarModel { get; set; }
         public virtual ComponentType ComponentType { get; set; }
         public virtual Manufacter Manufacter { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProviderComponent> ProviderComponents { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CarModel> CarModels { get; set; }
     }
 }

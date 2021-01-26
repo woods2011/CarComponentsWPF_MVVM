@@ -17,13 +17,16 @@ namespace CarComponentsWPF.ViewModels
     {
         public event CRUDOperationResultEventHandler CRUDcompleteNotify;
 
-        protected IDataService<TEntity> _dataService;
+        protected readonly IDataService<TEntity> _dataService;
         protected readonly TEntity _entity;
+        protected readonly MessageViewModel _messageViewModel;
 
         public CreateEntityViewModel(IDataService<TEntity> service, TEntity entity) : base()
         {
             _dataService = service;
             _entity = entity;
+
+            _messageViewModel = new MessageViewModel();
         }
 
 
@@ -31,7 +34,7 @@ namespace CarComponentsWPF.ViewModels
 
         public ICommand CreateEntityCommand => new ActionCommand(p => CreateEntity(), p => IsValid);
 
-
+        public MessageViewModel MessageViewModel { get => _messageViewModel; }
 
         protected void BackToListEntities()
         {
@@ -49,15 +52,16 @@ namespace CarComponentsWPF.ViewModels
             try
             {
                 createdEntity = _dataService.Create(entity);
+                CRUDcompleteNotify?.Invoke(this, new CRUDOperationResultEventArgs(isCreated, createdEntity, errorMessage));
             }
             catch (Exception ex)
             {
                 isCreated = false;
                 createdEntity = null;
                 errorMessage = ex.Message + "\nВнутренне исключение: " + ex?.InnerException?.InnerException?.Message ?? String.Empty;
-            }
 
-            CRUDcompleteNotify?.Invoke(this, new CRUDOperationResultEventArgs(isCreated, createdEntity, errorMessage));
+                MessageViewModel.Message = errorMessage;
+            }
         }
 
 

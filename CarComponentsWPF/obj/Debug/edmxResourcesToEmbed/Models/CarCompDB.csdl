@@ -6,7 +6,7 @@
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Components" Relationship="Self.ComponentCarModels" FromRole="CarModels" ToRole="Components" />
+    <NavigationProperty Name="Components" Relationship="Self.FK_Components_CarModels" FromRole="CarModels" ToRole="Components" />
   </EntityType>
   <EntityType Name="Component">
     <Key>
@@ -15,11 +15,12 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="id_Manuf" Type="Int32" Nullable="false" />
     <Property Name="id_CompType" Type="Int32" Nullable="false" />
+    <Property Name="id_CarModel" Type="Int32" Nullable="false" />
     <Property Name="PrimeCost" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CarModel" Relationship="Self.FK_Components_CarModels" FromRole="Components" ToRole="CarModels" />
     <NavigationProperty Name="ComponentType" Relationship="Self.FK_Components_ComponentTypes" FromRole="Components" ToRole="ComponentTypes" />
     <NavigationProperty Name="Manufacter" Relationship="Self.FK_Components_Manufacters" FromRole="Components" ToRole="Manufacters" />
     <NavigationProperty Name="ProviderComponents" Relationship="Self.FK_ProviderComponents_Components" FromRole="Components" ToRole="ProviderComponents" />
-    <NavigationProperty Name="CarModels" Relationship="Self.ComponentCarModels" FromRole="Components" ToRole="CarModels" />
   </EntityType>
   <EntityType Name="ComponentType">
     <Key>
@@ -128,6 +129,20 @@
     <Property Name="CompType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="CarModel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
   </EntityType>
+  <Association Name="FK_Components_CarModels">
+    <End Role="CarModels" Type="Self.CarModel" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Components" Type="Self.Component" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CarModels">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Components">
+        <PropertyRef Name="id_CarModel" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Components_ComponentTypes">
     <End Role="ComponentTypes" Type="Self.ComponentType" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -184,10 +199,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="ComponentCarModels">
-    <End Role="CarModels" Type="Self.CarModel" Multiplicity="*" />
-    <End Role="Components" Type="Self.Component" Multiplicity="*" />
-  </Association>
   <EntityContainer Name="CarCompDB8Entities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="CarModels" EntityType="Self.CarModel" />
     <EntitySet Name="Components" EntityType="Self.Component" />
@@ -200,6 +211,10 @@
     <EntitySet Name="AllCarComonentsVIEWs" EntityType="Self.AllCarComonentsVIEW" />
     <EntitySet Name="CompProviderCROSSJOINs" EntityType="Self.CompProviderCROSSJOIN" />
     <EntitySet Name="ManTypModCROSSJOINs" EntityType="Self.ManTypModCROSSJOIN" />
+    <AssociationSet Name="FK_Components_CarModels" Association="Self.FK_Components_CarModels">
+      <End Role="CarModels" EntitySet="CarModels" />
+      <End Role="Components" EntitySet="Components" />
+    </AssociationSet>
     <AssociationSet Name="FK_Components_ComponentTypes" Association="Self.FK_Components_ComponentTypes">
       <End Role="ComponentTypes" EntitySet="ComponentTypes" />
       <End Role="Components" EntitySet="Components" />
@@ -215,10 +230,6 @@
     <AssociationSet Name="FK_ProviderComponents_Providers" Association="Self.FK_ProviderComponents_Providers">
       <End Role="Providers" EntitySet="Providers" />
       <End Role="ProviderComponents" EntitySet="ProviderComponents" />
-    </AssociationSet>
-    <AssociationSet Name="ComponentCarModels" Association="Self.ComponentCarModels">
-      <End Role="CarModels" EntitySet="CarModels" />
-      <End Role="Components" EntitySet="Components" />
     </AssociationSet>
   </EntityContainer>
 </Schema>
