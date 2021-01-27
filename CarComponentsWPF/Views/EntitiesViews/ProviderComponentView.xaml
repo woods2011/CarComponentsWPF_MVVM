@@ -61,9 +61,7 @@
                     <Label Content="Учитывать регистр:"/>
                     <CheckBox Margin="0,2,0,0" IsChecked="{Binding CaseSensitive, Mode=OneWayToSource}" VerticalAlignment="Center"/>
 
-                    <!--<CheckBox IsChecked="{Binding CanModify, Mode=OneWay}"/>                    
-                    <Label Content="Id выбранного элмента:"/>
-                    <TextBox Width="100" Text="{Binding SelectedEntity.id, Mode=OneWay}"/>-->
+
                 </StackPanel>
 
                 <StackPanel Margin="0,5"  Orientation="Horizontal">

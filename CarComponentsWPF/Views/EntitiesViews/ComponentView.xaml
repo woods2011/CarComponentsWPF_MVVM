@@ -49,13 +49,8 @@
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <!--<Label Grid.Row="0" Grid.Column="0" Content="Группировка по:" VerticalAlignment="Center"/>
-                    <CheckBox  Grid.Row="0" Grid.Column="1" Margin="5,2,0,0" Content="Производителю" IsChecked="{Binding IsGroupManufacter, Mode=OneWayToSource}" VerticalAlignment="Center"/>
-                    <CheckBox  Grid.Row="0" Grid.Column="2" Margin="5,2,0,0" Content="Типу" IsChecked="{Binding IsGroupType, Mode=OneWayToSource}" VerticalAlignment="Center"/>
-                    <CheckBox  Grid.Row="0" Grid.Column="3" Margin="5,2,0,0" Content="Модели авто" IsChecked="{Binding IsGroupCarModel, Mode=OneWayToSource}" VerticalAlignment="Center"/>-->
 
                     <Label Grid.Row="1" Grid.Column="0" Content="Сортировка(Asc) по:" VerticalAlignment="Center"/>
-                    <!--<CheckBox Grid.Row="1" Grid.Column="1" Margin="5,2,0,0" Content="Названию авто" IsChecked="{Binding IsSortCarModel, Mode=OneWayToSource}" VerticalAlignment="Center"/>-->
                     <CheckBox Grid.Row="1" Grid.Column="2" Margin="5,2,0,0" Content="Себестоимости" IsChecked="{Binding IsSortPrimeCost, Mode=OneWayToSource}" VerticalAlignment="Center"/>
                 </Grid>
 
@@ -65,9 +60,6 @@
                     <Label Content="Учитывать регистр:"/>
                     <CheckBox Margin="0,2,0,0" IsChecked="{Binding CaseSensitive, Mode=OneWayToSource}" VerticalAlignment="Center"/>
 
-                    <!--<CheckBox IsChecked="{Binding CanModify, Mode=OneWay}"/>                    
-                    <Label Content="Id выбранного элмента:"/>
-                    <TextBox Width="100" Text="{Binding SelectedEntity.id, Mode=OneWay}"/>-->
                 </StackPanel>
 
                 <StackPanel Margin="0,5"  Orientation="Horizontal">

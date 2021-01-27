@@ -25,7 +25,6 @@
 
         
         <!--Меню-->
-        <!--<CheckBox IsChecked="{Binding IsVisible}"/>-->
         <StackPanel Visibility="{Binding IsAuth, Converter={StaticResource BooleanToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}" Background="#FFD0E3F6" Orientation="Vertical" Grid.Row="0" Grid.Column="0">
             <TextBlock Margin="5" Text="Комплектующие автомобиля" FontSize="16"/>
             <Menu Background="#FFD0E3F6" Margin="5,0,5,5" FontSize="14">
@@ -43,44 +42,15 @@
             </Menu>
         </StackPanel>
 
-
-        <!--Текущая ViewModel-->
         <ContentControl Margin="5" x:Name="scroll1" Grid.Row="1" Grid.Column="0"
                       Content="{Binding SelectedViewModel}"/>
         <!--<ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Margin="5" x:Name="scroll1" Grid.Row="1" Grid.Column="0"
-                      Content="{Binding SelectedViewModel}"/>-->
-        <!--<ScrollViewer x:Name="scroll1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Row="1" 
                       Content="{Binding SelectedViewModel}"/>-->
         
     </Grid>
 </Window>
 
-<!--<ScrollViewer x:Name="scroll2"  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Grid.Row="2" 
-                      Content="{Binding SelectedViewModel2}" Visibility="{Binding IsNotVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>-->
 
 
 
 
-
-
-
-
-
-
-
-
-
-<!--<StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
-            <ToolBar>
-            <Button Margin="10, 10, 5, 10" Width="100" Content="Home" Command="{Binding UpdateViewCommand}" CommandParameter="Home"/>
-            <Button Margin="5, 10" Width="100" Content="Account" Command="{Binding UpdateViewCommand}" CommandParameter="Account"/>
-                <Menu Width="100" Na>
-                    <MenuItem>
-                        <Button Name="Button1" Width="100" Command="{Binding TestCommand}">first button</Button>
-                    </MenuItem>
-                    <MenuItem>
-                        <Button Name="Button2" Width="100" Command="{Binding TestCommand2}">first button</Button>
-                    </MenuItem>
-                </Menu>
-            </ToolBar>
-        </StackPanel>-->
