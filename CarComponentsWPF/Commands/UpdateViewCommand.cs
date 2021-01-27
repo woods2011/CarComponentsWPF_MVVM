@@ -39,6 +39,7 @@ namespace CarComponentsWPF.Commands
                 case "CarModel": viewModel.SelectedViewModel = new CarModelViewModel(); break;
                 case "Component": viewModel.SelectedViewModel = new ComponentViewModel(); break;
                 case "Provider": viewModel.SelectedViewModel = new ProviderViewModel(); break;
+                case "ProviderComponent": viewModel.SelectedViewModel = new ProviderComponentViewModel(); break;
             }
 
             return;

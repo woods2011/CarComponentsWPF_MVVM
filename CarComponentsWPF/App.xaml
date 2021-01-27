@@ -74,7 +74,7 @@
             <views:DeleteProviderView/>
         </DataTemplate>
 
-
+        
         <DataTemplate DataType="{x:Type viewmodels:ComponentViewModel}">
             <views:ComponentView/>
         </DataTemplate>
@@ -88,6 +88,19 @@
             <views:DeleteComponentView/>
         </DataTemplate>
 
+
+        <DataTemplate DataType="{x:Type viewmodels:ProviderComponentViewModel}">
+            <views:ProviderComponentView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:CreateProviderComponentViewModel}">
+            <views:CreateProviderComponentView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:UpdateProviderComponentViewModel}">
+            <views:UpdateProviderComponentView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:DeleteProviderComponentViewModel}">
+            <views:DeleteProviderComponentView/>
+        </DataTemplate>
 
     </Application.Resources>
 </Application>

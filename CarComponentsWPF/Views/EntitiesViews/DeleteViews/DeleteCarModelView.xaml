@@ -53,7 +53,5 @@
                     Content="Вернуться к списку моделей авто" FontSize="14"/>
         </StackPanel>
 
-
     </Grid>
-
 </UserControl>

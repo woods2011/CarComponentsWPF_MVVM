@@ -102,3 +102,11 @@ C:\Users\arter\source\repos\CarComponentsWPF\CarComponentsWPF_MVVM\CarComponents
 C:\Users\arter\source\repos\CarComponentsWPF\CarComponentsWPF_MVVM\CarComponentsWPF\obj\Debug\Views\EntitiesViews\UpdateViews\UpdateComponentView.baml
 C:\Users\arter\source\repos\CarComponentsWPF\CarComponentsWPF_MVVM\CarComponentsWPF\obj\Debug\Views\EntitiesViews\DeleteViews\DeleteComponentView.g.cs
 C:\Users\arter\source\repos\CarComponentsWPF\CarComponentsWPF_MVVM\CarComponentsWPF\obj\Debug\Views\EntitiesViews\DeleteViews\DeleteComponentView.baml
+C:\Users\arter\source\repos\CarComponentsWPF\CarComponentsWPF_MVVM\CarComponentsWPF\obj\Debug\Views\EntitiesViews\ProviderComponentView.g.cs
+C:\Users\arter\source\repos\CarComponentsWPF\CarComponentsWPF_MVVM\CarComponentsWPF\obj\Debug\Views\EntitiesViews\ProviderComponentView.baml
+C:\Users\arter\source\repos\CarComponentsWPF\CarComponentsWPF_MVVM\CarComponentsWPF\obj\Debug\Views\EntitiesViews\CreateViews\CreateProviderComponentView.g.cs
+C:\Users\arter\source\repos\CarComponentsWPF\CarComponentsWPF_MVVM\CarComponentsWPF\obj\Debug\Views\EntitiesViews\UpdateViews\UpdateProviderComponentView.g.cs
+C:\Users\arter\source\repos\CarComponentsWPF\CarComponentsWPF_MVVM\CarComponentsWPF\obj\Debug\Views\EntitiesViews\CreateViews\CreateProviderComponentView.baml
+C:\Users\arter\source\repos\CarComponentsWPF\CarComponentsWPF_MVVM\CarComponentsWPF\obj\Debug\Views\EntitiesViews\UpdateViews\UpdateProviderComponentView.baml
+C:\Users\arter\source\repos\CarComponentsWPF\CarComponentsWPF_MVVM\CarComponentsWPF\obj\Debug\Views\EntitiesViews\DeleteViews\DeleteProviderComponentView.g.cs
+C:\Users\arter\source\repos\CarComponentsWPF\CarComponentsWPF_MVVM\CarComponentsWPF\obj\Debug\Views\EntitiesViews\DeleteViews\DeleteProviderComponentView.baml

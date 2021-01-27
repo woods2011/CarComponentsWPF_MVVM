@@ -96,13 +96,13 @@ namespace CarComponentsWPF.ViewModels
             var selectedCarModel = SelectedCarModel;
 
             if (selectedManuf != null)
-                filterDictionary.Add("Manuf_id", selectedManuf.id);
+                filterDictionary.Add(nameof(Manufacter), selectedManuf.id);
 
             if (selectedCompType != null)
-                filterDictionary.Add("CompType_id", selectedCompType.id);
+                filterDictionary.Add(nameof(ComponentType), selectedCompType.id);
 
             if (selectedCarModel != null)
-                filterDictionary.Add("CarModel_id", selectedCarModel.id);
+                filterDictionary.Add(nameof(CarModel), selectedCarModel.id);
 
             GetWithFilterEntities(filterDictionary);
         }

@@ -6,9 +6,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="clr-namespace:CarComponentsWPF"
     xmlns:viewmodels="clr-namespace:CarComponentsWPF.ViewModels"
+    Title="Комплектующие автомобилей" Height="870" Width="1100"
     
     mc:Ignorable="d"
-    Title="MainWindow" Height="700" Width="1000"
     d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel, IsDesignTimeCreatable=True}">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />

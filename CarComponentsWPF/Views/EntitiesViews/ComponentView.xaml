@@ -142,7 +142,7 @@
                 <ListView.View>
                     <GridView>
                         <GridViewColumn>
-                            <GridViewColumnHeader Content="id(Vendor Code)" />
+                            <GridViewColumnHeader Content="id" />
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Padding="0 0 50 0" Text="{Binding id}" />
@@ -205,7 +205,7 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
-                    <Label Grid.Row="0" Grid.Column="0" Margin="0,5" Content="id:" FontWeight="Bold" HorizontalAlignment="Left"/>
+                    <Label Grid.Row="0" Grid.Column="0" Margin="0,5" Content="id (Vendor Code):" FontWeight="Bold" HorizontalAlignment="Left"/>
                     <TextBlock MinWidth="120"  Grid.Row="0" Grid.Column="1" Padding="0 0 50 0" Text="{Binding SelectedEntity.id}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
 
                     <Label Grid.Row="1" Grid.Column="0" Margin="0,5" Content="Manufacter id:" FontWeight="Bold" HorizontalAlignment="Left"/>

@@ -145,6 +145,9 @@
     <Compile Include="Services\DataServices\ComponentDataService.cs" />
     <Compile Include="Services\DataServices\ProviderComponentDataService.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\EntitiesViewModels\CreateViewModels\CreateProviderComponentViewModel.cs" />
+    <Compile Include="ViewModels\EntitiesViewModels\DeleteViewModels\DeleteProviderComponentViewModel.cs" />
+    <Compile Include="ViewModels\EntitiesViewModels\ProviderComponentViewModel.cs" />
     <Compile Include="ViewModels\EntitiesViewModels\CreateViewModels\CreateManufacterViewModel.cs" />
     <Compile Include="ViewModels\EntitiesViewModels\CreateViewModels\CreateProviderViewModel.cs" />
     <Compile Include="ViewModels\EntitiesViewModels\DeleteViewModels\DeleteComponentViewModel.cs" />
@@ -162,6 +165,7 @@
     <Compile Include="ViewModels\EntitiesViewModels\CarModelViewModel.cs" />
     <Compile Include="ViewModels\EntitiesViewModels\UpdateViewModels\UpdateComponentTypeViewModel.cs" />
     <Compile Include="ViewModels\EntitiesViewModels\UpdateViewModels\UpdateCarModelViewModel.cs" />
+    <Compile Include="ViewModels\EntitiesViewModels\UpdateViewModels\UpdateProviderComponentViewModel.cs" />
     <Compile Include="ViewModels\EntitiesViewModels\UpdateViewModels\UpdateComponentViewModel.cs" />
     <Compile Include="ViewModels\EntitiesViewModels\UpdateViewModels\UpdateProviderViewModel.cs" />
     <Compile Include="ViewModels\EntitiesViewModels\UpdateViewModels\UpdateManufacterViewModel.cs" />
@@ -176,6 +180,15 @@
     <Compile Include="ViewModels\MessageViewModel.cs" />
     <Compile Include="Views\EntitiesViews\ComponentTypeView.cs">
       <DependentUpon>ComponentTypeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EntitiesViews\CreateViews\CreateProviderComponentView.cs">
+      <DependentUpon>CreateProviderComponentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EntitiesViews\DeleteViews\DeleteProviderComponentView.cs">
+      <DependentUpon>DeleteProviderComponentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EntitiesViews\ProviderComponentView.cs">
+      <DependentUpon>ProviderComponentView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\EntitiesViews\CreateViews\CreateComponentTypeView.xaml.cs">
       <DependentUpon>CreateComponentTypeView.xaml</DependentUpon>
@@ -212,6 +225,9 @@
     </Compile>
     <Compile Include="Views\EntitiesViews\ProviderView.cs">
       <DependentUpon>ProviderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EntitiesViews\UpdateViews\UpdateProviderComponentView.cs">
+      <DependentUpon>UpdateProviderComponentView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\EntitiesViews\UpdateViews\UpdateComponentView.cs">
       <DependentUpon>UpdateComponentView.xaml</DependentUpon>
@@ -265,6 +281,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\EntitiesViews\CreateViews\CreateProviderComponentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\EntitiesViews\DeleteViews\DeleteProviderComponentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\EntitiesViews\ProviderComponentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\EntitiesViews\CreateViews\CreateComponentTypeView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -310,6 +338,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\EntitiesViews\ProviderView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\EntitiesViews\UpdateViews\UpdateProviderComponentView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

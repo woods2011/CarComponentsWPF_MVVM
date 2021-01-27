@@ -54,13 +54,13 @@ namespace CarComponentsWPF.Services.DataServices
                 IQueryable<Component> query = context.Components.AsQueryable();
 
 
-                if (filterDictionary.TryGetValue("Manuf_id", out int M_id))
+                if (filterDictionary.TryGetValue(nameof(Manufacter), out int M_id))
                     query = query.Where(c => c.id_Manuf == M_id);
 
-                if (filterDictionary.TryGetValue("CompType_id", out int CT_id))
+                if (filterDictionary.TryGetValue(nameof(ComponentType), out int CT_id))
                     query = query.Where(c => c.id_CompType == CT_id);
 
-                if (filterDictionary.TryGetValue("CarModel_id", out int CM_id))
+                if (filterDictionary.TryGetValue(nameof(CarModel), out int CM_id))
                     query = query.Where(c => c.id_CarModel == CM_id);
 
 

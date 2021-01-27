@@ -25,11 +25,7 @@ namespace CarComponentsWPF
         public MainWindow()
         {
             //Class1 class1 = new Class1();
-            new AuthenticationService().Login("sdsdsdsdsd", "dsdsdssaddsdsds");
-
-
             InitializeComponent();
-            //DataContext = new MainViewModel();
         }
     }
 }

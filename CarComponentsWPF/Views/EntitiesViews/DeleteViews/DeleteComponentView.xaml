@@ -65,7 +65,7 @@
             <Button Command="{Binding DeleteEntityCommand}" 
                     Content="Удалить" Margin="0,0,5,0" FontSize="14"/>
             <Button Command="{Binding BackToListEntitiesCommand}" 
-                    Content="Вернуться к списку комплеткующих" FontSize="14"/>
+                    Content="Вернуться к списку комплектующих" FontSize="14"/>
         </StackPanel>
 
 
