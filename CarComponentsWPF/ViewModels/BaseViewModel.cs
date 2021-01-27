@@ -85,8 +85,6 @@ namespace CarComponentsWPF.ViewModels
         {
             get
             {
-                //Console.WriteLine("Я тут");
-
                 String result = null;
                 var validationResults = new List<ValidationResult>();
                 var property = GetType().GetProperty(columnName);

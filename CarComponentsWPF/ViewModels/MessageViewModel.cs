@@ -17,8 +17,6 @@ namespace CarComponentsWPF.ViewModels
 
 
         public ICommand OkCommand => new ActionCommand(p => Message = String.Empty);
-        //public ICommand OkCommand => new ActionCommand(p => Ok(), p => HasMessage);
-
 
 
         public override bool IsValid => true;

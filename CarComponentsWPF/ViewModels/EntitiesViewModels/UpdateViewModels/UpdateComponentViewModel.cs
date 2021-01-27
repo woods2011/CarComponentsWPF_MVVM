@@ -82,10 +82,4 @@ namespace CarComponentsWPF.ViewModels
     }
 
 
-    //[Required(ErrorMessage = "Название производителя не должно быть пустым")]
-    //public string Name { get => _entity.Name; set { _entity.Name = value; OnPropertyChanged(Name); } }
-
-    //[Required(ErrorMessage = "Название страны производителя не должно быть пустым")]
-    //public string Country { get => _entity.Contry; set { _entity.Contry = value; OnPropertyChanged(Country); } }
-
 }

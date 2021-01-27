@@ -15,17 +15,8 @@ namespace CarComponentsWPF.ViewModels
 {
     public interface ICRUDViewModel : IDisposable
     {
-        //CRUDoperationTypes CRUDType { get; }
-
         event CRUDOperationResultEventHandler CRUDcompleteNotify;
     }
-
-    //public enum CRUDoperationTypes
-    //{
-    //    Create,
-    //    Update,
-    //    Delete
-    //}
 
     public class CRUDOperationResultEventArgs : EventArgs
     {

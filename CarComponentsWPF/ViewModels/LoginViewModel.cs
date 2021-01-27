@@ -34,12 +34,10 @@ namespace CarComponentsWPF.ViewModels
 
 
         [Required(ErrorMessage = "Логин не должен быть пустым")]
-        //[StringLength(50, MinimumLength = 2, ErrorMessage = "Логин должен содержать не менее 2 символов")]
         public string Username { get => _username; set => OnPropertyChanged(ref _username, value); }
 
 
         [Required(ErrorMessage = "Пароль не должен быть пустым")]
-        //[StringLength(50, MinimumLength = 3, ErrorMessage = "Пароль должен содержать не менее 3 символов")]
         public string Password { get => _password; set => OnPropertyChanged(ref _password, value); }
 
 

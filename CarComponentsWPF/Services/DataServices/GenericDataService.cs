@@ -73,35 +73,3 @@ namespace CarComponentsWPF.Services.DataServices
         }
     }
 }
-
-
-
-
-//try
-//{
-       //context.SaveChanges();
-//}
-//catch (DbUpdateException ex)
-//{
-//    throw new Exception(ex.Message + "\nВнутренне исключение: "+ ex.InnerException.InnerException.Message);
-//}
-//catch (DbUpdateConcurrencyException ex)
-//{
-//    exceptionMessage += ex.Message;
-//    Console.WriteLine(exceptionMessage.Length);
-//}
-//catch (DbUpdateException ex)
-//{
-//    exceptionMessage += ex.Message;
-//    Console.WriteLine(exceptionMessage.Length);
-//}
-//catch (DbEntityValidationException ex)
-//{
-//    exceptionMessage += ex.Message;
-//    Console.WriteLine(exceptionMessage.Length);
-//}
-//finally
-//{
-//    if (!String.IsNullOrEmpty(exceptionMessage))
-//        throw new Exception(exceptionMessage);
-//}

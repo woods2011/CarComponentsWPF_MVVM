@@ -88,24 +88,3 @@ namespace CarComponentsWPF.ViewModels
     }
 }
 
-
-
-//protected override bool SearchEntities(object obj)
-//{
-//    if (obj is Manufacter manufacter)
-//    {
-//        var searchQueLow = EntitiesSearchQuery.ToLower();
-
-//        return manufacter.Name.ToLower().Contains(searchQueLow) ||
-//            manufacter.Contry.ToLower().Contains(searchQueLow);
-//    }
-
-//    return false;
-//}
-
-
-//public bool IsGroupCountry { get => _isGroupCountry; set => OnPropertyChanged(ref _isGroupCountry, value); }
-//public bool IsSortAscCountry { get => _isSortAscCountry; set { OnPropertyChanged(ref _isSortAscCountry, value); if (IsSortAscCountry) IsSortDescCountry = false; } }
-//public bool IsSortDescCountry { get => _isSortDescCountry; set { OnPropertyChanged(ref _isSortDescCountry, value); if (IsSortDescCountry) IsSortAscCountry = false; } }
-//public bool IsSortAscName { get => _isSortAscName; set => OnPropertyChanged(ref _isSortAscName, value); }
-//public bool IsSortDescName { get => _isSortDescName; set => OnPropertyChanged(ref _isSortDescName, value); }
