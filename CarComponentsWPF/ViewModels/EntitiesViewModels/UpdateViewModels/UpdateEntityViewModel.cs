@@ -19,21 +19,26 @@ namespace CarComponentsWPF.ViewModels
 
         protected IDataService<TEntity> _dataService;
         protected readonly TEntity _entity;
+        protected readonly MessageViewModel _messageViewModel;
 
         public UpdateEntityViewModel(IDataService<TEntity> service, TEntity entity) : base()
         {
+            _messageViewModel = new MessageViewModel();
             _dataService = service;
-            _entity = entity;
 
-
+            if (entity == null)
+                BackToListEntities();
+            _entity = _dataService.Get(entity.id);
+            if (entity == null)
+                BackToListEntities();
         }
 
 
         public ICommand BackToListEntitiesCommand => new ActionCommand(p => BackToListEntities());
 
-        public ICommand CreateEntityCommand => new ActionCommand(p => UpdateEntity(), p => IsValid);
+        public ICommand UpdateEntityCommand => new ActionCommand(p => UpdateEntity(), p => IsValid);
 
-
+        public MessageViewModel MessageViewModel { get => _messageViewModel; }
 
         protected void BackToListEntities()
         {
@@ -51,22 +56,17 @@ namespace CarComponentsWPF.ViewModels
             try
             {
                 updatedEntity = _dataService.Update(entity);
+                CRUDcompleteNotify?.Invoke(this, new CRUDOperationResultEventArgs(isUpdated, updatedEntity, errorMessage));
             }
             catch (Exception ex)
             {
                 isUpdated = false;
                 updatedEntity = null;
-                errorMessage = ex.Message;
-            }
+                errorMessage = ex.Message + "\nВнутренне исключение: " + ex?.InnerException?.InnerException?.Message ?? String.Empty;
 
-            CRUDcompleteNotify?.Invoke(this, new CRUDOperationResultEventArgs(isUpdated, updatedEntity, errorMessage));
+                MessageViewModel.Message = errorMessage;
+            }
         }
 
-
-
-        //public CRUDoperationTypes CRUDType { get; } = CRUDoperationTypes.Create;
-        //public override bool IsValid => true;
-        //public override string this[string columnName] => String.Empty;
-        //public override string Error => String.Empty;
     }
 }

@@ -26,7 +26,7 @@
         
         <!--Меню-->
         <!--<CheckBox IsChecked="{Binding IsVisible}"/>-->
-        <StackPanel Background="#FFD0E3F6" Orientation="Vertical" Grid.Row="0" Grid.Column="0">
+        <StackPanel Visibility="{Binding IsAuth, Converter={StaticResource BooleanToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}" Background="#FFD0E3F6" Orientation="Vertical" Grid.Row="0" Grid.Column="0">
             <TextBlock Margin="5" Text="Комплектующие автомобиля" FontSize="16"/>
             <Menu Background="#FFD0E3F6" Margin="5,0,5,5" FontSize="14">
                 <MenuItem Background="#FFB9D7F3" Header="Главная" BorderBrush="Gray" Command="{Binding UpdateViewCommand}" CommandParameter="Home"/>

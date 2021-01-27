@@ -5,52 +5,50 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using CarComponentsWPF.Commands;
+using CarComponentsWPF.Services.DataServices;
 
 namespace CarComponentsWPF.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
         private BaseViewModel _selectedViewModel;
-        public BaseViewModel SelectedViewModel
-        {
-            get { return _selectedViewModel; }
-            set
-            {
-                OnPropertyChanged(ref _selectedViewModel, value);
-            }
-        }
-
-        public ICommand UpdateViewCommand { get; set; }
-
+        private bool _isAuth;
 
         public MainViewModel()
         {
             UpdateViewCommand = new UpdateViewCommand(this);
-            //SelectedViewModel2 = new AccountViewModel();
+            IsAuth = false;
+            var VM = new LoginViewModel(new AuthenticationService());
+            VM.LoginResultNotify += TryAuthHander;
+            SelectedViewModel = VM;
         }
 
 
+        public BaseViewModel SelectedViewModel { get => _selectedViewModel; set => OnPropertyChanged(ref _selectedViewModel, value); }
+
+        public bool IsAuth { get => _isAuth; private set => OnPropertyChanged(ref _isAuth, value); }
 
 
+        public ICommand UpdateViewCommand { get; set; }
 
 
-
-
-
-
-        private object _selectedViewModel2;
-        public object SelectedViewModel2
+        private void TryAuthHander(object sender, TryAuthResultEventArgs e)
         {
-            get { return _selectedViewModel2; }
-            set
-            {
-                OnPropertyChanged(ref _selectedViewModel2, value);
-            }
+            if (SelectedViewModel is LoginViewModel curVM)
+                if (sender is LoginViewModel logVM)
+                    if (logVM == SelectedViewModel)
+                        if (e.AuthResult.HasValue)
+                            if (e.AuthResult.Value)
+                            {
+                                curVM.LoginResultNotify -= TryAuthHander;
+                                IsAuth = true;
+                                SelectedViewModel = new HomeViewModel();
+                                return;
+                            }
+
+            Console.WriteLine("MaybeLogicError: TryAuthHander(object sender, TryAuthResultEventArgs e)");
         }
 
-        private bool _isVisible;
-        public bool IsVisible { get => _isVisible; set { OnPropertyChanged(ref _isVisible, value); OnPropertyChanged(nameof(IsNotVisible)); } }
 
-        public bool IsNotVisible { get => !IsVisible; }
     }
 }

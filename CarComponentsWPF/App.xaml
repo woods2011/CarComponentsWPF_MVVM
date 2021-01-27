@@ -14,12 +14,15 @@
         <DataTemplate DataType="{x:Type viewmodels:HomeViewModel}">
             <views:HomeView/>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodels:AccountViewModel}">
-            <views:AccountView/>
+        <DataTemplate DataType="{x:Type viewmodels:LoginViewModel}">
+            <views:LoginView/>
         </DataTemplate>
         
         <DataTemplate DataType="{x:Type viewmodels:ManufacterViewModel}">
             <views:ManufacterView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:UpdateManufacterViewModel}">
+            <views:UpdateManufacterView/>
         </DataTemplate>
         <DataTemplate DataType="{x:Type viewmodels:CreateManufacterViewModel}">
             <views:CreateManufacterView/>

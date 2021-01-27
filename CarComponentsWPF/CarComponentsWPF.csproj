@@ -150,16 +150,21 @@
     <Compile Include="ViewModels\EntitiesViewModels\CreateViewModels\CreateManufacterViewModel.cs" />
     <Compile Include="ViewModels\EntitiesViewModels\DeleteViewModels\DeleteManufacterViewModel.cs" />
     <Compile Include="ViewModels\EntitiesViewModels\DeleteViewModels\DeleteEntityViewModel.cs" />
+    <Compile Include="ViewModels\EntitiesViewModels\UpdateViewModels\UpdateManufacterViewModel.cs" />
     <Compile Include="ViewModels\EntitiesViewModels\UpdateViewModels\UpdateEntityViewModel.cs" />
     <Compile Include="ViewModels\EntitiesViewModels\ICRUDViewModel.cs" />
     <Compile Include="ViewModels\EntitiesViewModels\CreateViewModels\CreateEntityViewModel.cs" />
     <Compile Include="ViewModels\EntitiesViewModels\EntityViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\EntitiesViewModels\ManufacterViewModel.cs" />
     <Compile Include="ViewModels\MessageViewModel.cs" />
     <Compile Include="Views\EntitiesViews\DeleteViews\DeleteManufacterView.xaml.cs">
       <DependentUpon>DeleteManufacterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EntitiesViews\UpdateViews\UpdateManufacterView.xaml.cs">
+      <DependentUpon>UpdateManufacterView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MessageView.xaml.cs">
       <DependentUpon>MessageView.xaml</DependentUpon>
@@ -170,8 +175,8 @@
     <Compile Include="Views\EntitiesViews\ManufacterView.xaml.cs">
       <DependentUpon>ManufacterView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AccountView.xaml.cs">
-      <DependentUpon>AccountView.xaml</DependentUpon>
+    <Compile Include="Views\LoginView.xaml.cs">
+      <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
@@ -194,6 +199,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\EntitiesViews\UpdateViews\UpdateManufacterView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\MessageView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -206,7 +215,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\AccountView.xaml">
+    <Page Include="Views\LoginView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -256,7 +265,6 @@
   <ItemGroup>
     <Folder Include="Controls\" />
     <Folder Include="Styles\" />
-    <Folder Include="Views\EntitiesViews\UpdateViews\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Models\CarCompDB.Context.tt">

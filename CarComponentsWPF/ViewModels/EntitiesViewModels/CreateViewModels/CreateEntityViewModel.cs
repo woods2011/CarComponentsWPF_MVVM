@@ -13,7 +13,7 @@ using System.Collections.ObjectModel;
 
 namespace CarComponentsWPF.ViewModels
 {
-    public abstract class CreateEntityViewModel<TEntity> : BaseViewModel, ICRUDViewModel where TEntity : class, IEntity
+    public abstract class CreateEntityViewModel<TEntity> : BaseViewModel, ICRUDViewModel where TEntity : class, IEntity, new()
     {
         public event CRUDOperationResultEventHandler CRUDcompleteNotify;
 
@@ -23,10 +23,9 @@ namespace CarComponentsWPF.ViewModels
 
         public CreateEntityViewModel(IDataService<TEntity> service, TEntity entity) : base()
         {
-            _dataService = service;
-            _entity = entity;
-
             _messageViewModel = new MessageViewModel();
+            _dataService = service;
+            _entity = new TEntity();
         }
 
 
@@ -63,8 +62,6 @@ namespace CarComponentsWPF.ViewModels
                 MessageViewModel.Message = errorMessage;
             }
         }
-
-
 
         //public CRUDoperationTypes CRUDType { get; } = CRUDoperationTypes.Create;
         //public override bool IsValid => true;

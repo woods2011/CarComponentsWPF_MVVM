@@ -13,7 +13,7 @@ namespace CarComponentsWPF.ViewModels
     {
         protected BaseViewModel()
         {
-            ErrorCollection = new Dictionary<string, string>();
+            ErrorCollection = new DictionaryWrapper<string, string>(new Dictionary<string, string>());
         }
 
 
@@ -60,7 +60,7 @@ namespace CarComponentsWPF.ViewModels
             get => Validator.TryValidateObject(this, new ValidationContext(this), null, true);
         }
 
-        public Dictionary<string, string> ErrorCollection { get; private set; }
+        public DictionaryWrapper<string, string> ErrorCollection { get; private set; }
 
         public virtual string Error
         {
@@ -68,7 +68,7 @@ namespace CarComponentsWPF.ViewModels
             {
                 String result = String.Empty;
 
-                foreach (var el in ErrorCollection)
+                foreach (var el in ErrorCollection.Dictionary)
                 {
                     if (el.Value != null)
                         result += $"{el.Key} - {el.Value} \r\n";
@@ -95,7 +95,7 @@ namespace CarComponentsWPF.ViewModels
                 if (!isValid)
                     result = validationResults.First().ErrorMessage;
 
-                if (ErrorCollection.ContainsKey(columnName))
+                if (ErrorCollection.Dictionary.ContainsKey(columnName))
                 {
                     if (ErrorCollection[columnName] != result)
                     {
@@ -106,7 +106,7 @@ namespace CarComponentsWPF.ViewModels
                 }
                 else if (result != null)
                 {
-                    ErrorCollection.Add(columnName, result);
+                    ErrorCollection.Dictionary.Add(columnName, result);
                     OnPropertyChanged("ErrorCollection");
                     OnPropertyChanged("Error");
                 }
@@ -116,5 +116,31 @@ namespace CarComponentsWPF.ViewModels
         }
 
         #endregion
+    }
+
+    public class DictionaryWrapper<TKey, TValue>
+    {
+        private readonly Dictionary<TKey, TValue> _dictionary;
+
+
+        public DictionaryWrapper(Dictionary<TKey, TValue> dictionary)
+        {
+            _dictionary = dictionary;
+        }
+
+        public TValue this[TKey key]
+        {
+            get
+            {
+                TValue value;
+                Dictionary.TryGetValue(key, out value);
+                return value;
+            }
+            set
+            {
+                Dictionary[key] = value;
+            }
+        }
+        public Dictionary<TKey, TValue> Dictionary => _dictionary;
     }
 }

@@ -14,12 +14,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CarComponentsWPF.ViewModels
 {
-    public class CreateManufacterViewModel : CreateEntityViewModel<Manufacter>
+    public class UpdateManufacterViewModel : UpdateEntityViewModel<Manufacter>
     {
-        public CreateManufacterViewModel(IDataService<Manufacter> service, Manufacter entity) : base(service, entity)
-        {
-        }
 
+        public UpdateManufacterViewModel(IDataService<Manufacter> service, Manufacter entity) : base(service, entity)
+        {
+            Name = entity.Name;
+            Country = entity.Contry;
+        }
 
         [Required(ErrorMessage = "Название производителя не должно быть пустым")]
         public string Name { get => _entity.Name; set { _entity.Name = value; OnPropertyChanged(Name); } }
@@ -29,4 +31,3 @@ namespace CarComponentsWPF.ViewModels
 
     }
 }
-

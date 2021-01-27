@@ -90,17 +90,20 @@ namespace CarComponentsWPF.ViewModels
         public bool IsDeleteVMactive { get => DeleteEntityViewModel != null; }
         public bool IsGeneralVMactive { get => !(IsCreateVMactive || IsUpdateVMactive || IsDeleteVMactive); }
 
+        public bool CaseSensitive { get; set; } = false;
+
         protected virtual bool SearchEntities(object obj)
         {
             if (obj is TEntity entity)
             {
                 Type type = typeof(TEntity);
-                string searchQueLow = EntitiesSearchQuery.ToLower();
+                string searchQueLow = CaseSensitive ? EntitiesSearchQuery : EntitiesSearchQuery.ToLower();
                 string propValue;
 
                 foreach (var prop in _propForSearchList)
                 {
-                    propValue = (type.GetProperty(prop).GetValue(entity) as String)?.ToLower();
+                    propValue = (type.GetProperty(prop).GetValue(entity) as String);
+                    propValue = CaseSensitive ? propValue : propValue?.ToLower();
                     if (propValue?.Contains(searchQueLow) ?? false)
                         return true;
                 }

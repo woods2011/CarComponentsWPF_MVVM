@@ -19,9 +19,9 @@ namespace CarComponentsWPF.Views
     /// <summary>
     /// Interaction logic for AccountView.xaml
     /// </summary>
-    public partial class AccountView : UserControl
+    public partial class LoginView : UserControl
     {
-        public AccountView()
+        public LoginView()
         {
             InitializeComponent();
         }

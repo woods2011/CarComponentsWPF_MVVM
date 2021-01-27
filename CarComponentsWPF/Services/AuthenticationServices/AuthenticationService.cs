@@ -11,7 +11,11 @@ namespace CarComponentsWPF.Services.DataServices
         {
             var sha1 = new SHA1CryptoServiceProvider();
             var sha1data = sha1.ComputeHash(Encoding.ASCII.GetBytes(password));
+            //var sha1data = sha1.ComputeHash(Encoding.ASCII.GetBytes("!Sfbovdolkntw2002"));
             string inputPassHash = Encoding.ASCII.GetString(sha1data);
+            //Console.WriteLine(inputPassHash);
+            
+
 
             string passHash = "";
 
@@ -29,7 +33,8 @@ namespace CarComponentsWPF.Services.DataServices
         {
             //Временное решение
             _loginPassHashDictionary = new Dictionary<string, string>();
-            _loginPassHashDictionary.Add("TestUser", @".?w????h>V???~m?h?y");
+            //_loginPassHashDictionary.Add("TestUser", @".?w????h>V???~m?h?y");
+            _loginPassHashDictionary.Add("TestUser2000", @"??	???\p6?[?6???????");
         }
     }
 }

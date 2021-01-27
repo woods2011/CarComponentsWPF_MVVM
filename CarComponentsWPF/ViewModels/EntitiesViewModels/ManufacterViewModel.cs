@@ -82,14 +82,14 @@ namespace CarComponentsWPF.ViewModels
 
         protected override void CreateEntity()
         {
-            CreateEntity(new CreateManufacterViewModel(_dataService, new Manufacter()));
+            CreateEntity(new CreateManufacterViewModel(_dataService, null));
         }
 
         protected override void UpdateEntity()
         {
-            //var entity = SelectedEntity;
-            //if (entity != null)
-            //    UpdateEntity(new UpdateManufacterViewModel(_dataService, entity));
+            var entity = SelectedEntity;
+            if (entity != null)
+                UpdateEntity(new UpdateManufacterViewModel(_dataService, entity));
         }
 
         protected override void DeleteEntity()

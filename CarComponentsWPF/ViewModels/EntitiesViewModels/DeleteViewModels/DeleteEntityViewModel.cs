@@ -23,10 +23,14 @@ namespace CarComponentsWPF.ViewModels
 
         public DeleteEntityViewModel(IDataService<TEntity> service, TEntity entity) : base()
         {
-            _dataService = service;
-            _entity = entity;
-
             _messageViewModel = new MessageViewModel();
+            _dataService = service;
+
+            if (entity == null)
+                BackToListEntities();
+            _entity = _dataService.Get(entity.id);
+            if (entity == null)
+                BackToListEntities();
         }
 
 
@@ -72,7 +76,9 @@ namespace CarComponentsWPF.ViewModels
         }
 
 
-
+        public override bool IsValid => true;
+        public override string this[string columnName] => String.Empty;
+        public override string Error => String.Empty;
 
     }
 }
