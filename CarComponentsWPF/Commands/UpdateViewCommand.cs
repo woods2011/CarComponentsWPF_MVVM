@@ -27,7 +27,7 @@ namespace CarComponentsWPF.Commands
         public void Execute(object parameter)
         {
             var param = parameter.ToString();
-            Console.WriteLine(param);
+            //Console.WriteLine(param);
             if (param == null)
                 return;
 

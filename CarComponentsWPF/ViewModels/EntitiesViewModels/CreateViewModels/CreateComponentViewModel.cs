@@ -31,11 +31,6 @@ namespace CarComponentsWPF.ViewModels
             ManufList = manufList;
             CompTypeList = compTypesList;
             CarModelList = carModelsList;
-
-            //Console.WriteLine("id");
-            //Console.WriteLine(_entity.id);
-            //Console.WriteLine("neid");
-            //Console.WriteLine(_entity.Manufacter?.ToString() ?? "ManufNull");
         }
 
 

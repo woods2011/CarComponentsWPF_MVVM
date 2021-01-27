@@ -189,14 +189,14 @@ namespace CarComponentsWPF.ViewModels
 
         protected void GetAllEntities()
         {
-            Console.WriteLine("GetAllEntities");
+            //Console.WriteLine("GetAllEntities");
             Entities.Clear();
             SelectedEntity = null;
 
             foreach (var entity in _dataService.GetAll())
             {
                 Entities.Add(entity);
-                Console.WriteLine("anotherone");
+                //Console.WriteLine("anotherone");
             }
         }
 

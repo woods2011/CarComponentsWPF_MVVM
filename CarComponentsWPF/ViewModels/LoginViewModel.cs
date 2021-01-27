@@ -54,7 +54,6 @@ namespace CarComponentsWPF.ViewModels
             else
                 MessageViewModel.Message = "Неверный логин или пароль";
 
-            Console.WriteLine("KEK!!!");
             return;
         }
         private void TestAuth()
