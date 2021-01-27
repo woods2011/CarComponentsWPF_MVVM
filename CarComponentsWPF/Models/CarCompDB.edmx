@@ -202,8 +202,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="TestProcedure1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="TestProcedure2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="Хранилище CarCompDB8ModelContainer">
           <EntitySet Name="CarModels" EntityType="Self.CarModels" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Components" EntityType="Self.Components" Schema="dbo" store:Type="Tables" />
@@ -650,36 +648,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="TestProcedure1" FunctionName="Хранилище CarCompDB8Model.TestProcedure1">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="CarCompDB8Model.TestProcedure1_Result">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="id_Manuf" ColumnName="id_Manuf" />
-                <ScalarProperty Name="id_CompType" ColumnName="id_CompType" />
-                <ScalarProperty Name="id_CarModel" ColumnName="id_CarModel" />
-                <ScalarProperty Name="PrimeCost" ColumnName="PrimeCost" />
-                <ScalarProperty Name="id1" ColumnName="id1" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="TestProcedure2" FunctionName="Хранилище CarCompDB8Model.TestProcedure2">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="CarCompDB8Model.TestProcedure2_Result">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="id_CarComp" ColumnName="id_CarComp" />
-                <ScalarProperty Name="id_Provider" ColumnName="id_Provider" />
-                <ScalarProperty Name="RetailPrice" ColumnName="RetailPrice" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="id1" ColumnName="id1" />
-                <ScalarProperty Name="id_Manuf" ColumnName="id_Manuf" />
-                <ScalarProperty Name="id_CompType" ColumnName="id_CompType" />
-                <ScalarProperty Name="id_CarModel" ColumnName="id_CarModel" />
-                <ScalarProperty Name="PrimeCost" ColumnName="PrimeCost" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

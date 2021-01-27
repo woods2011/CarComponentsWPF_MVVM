@@ -39,14 +39,5 @@ namespace CarComponentsWPF.Models
         public virtual DbSet<CompProviderCROSSJOIN> CompProviderCROSSJOINs { get; set; }
         public virtual DbSet<ManTypModCROSSJOIN> ManTypModCROSSJOINs { get; set; }
     
-        public virtual ObjectResult<TestProcedure1_Result> TestProcedure1()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TestProcedure1_Result>("TestProcedure1");
-        }
-    
-        public virtual ObjectResult<TestProcedure2_Result> TestProcedure2()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TestProcedure2_Result>("TestProcedure2");
-        }
     }
 }

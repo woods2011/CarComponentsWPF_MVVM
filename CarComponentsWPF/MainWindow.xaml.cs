@@ -24,7 +24,6 @@ namespace CarComponentsWPF
     {
         public MainWindow()
         {
-            //Class1 class1 = new Class1();
             InitializeComponent();
         }
     }
