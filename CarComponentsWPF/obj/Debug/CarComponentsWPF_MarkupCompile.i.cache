@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\arter\source\repos\CarComponentsWPF\CarComponentsWPF_MVVM\CarComponentsWPF\App.xaml
-9-1256927638
+251085841281
 2-1891498201
-591092111439
+86-93667048
 23-1921034726
-Components\BindablePasswordBox.xaml;MainWindow.xaml;Views\EntitiesViews\DeleteViews\DeleteManufacterView.xaml;Views\EntitiesViews\UpdateViews\UpdateManufacterView.xaml;Views\MessageView.xaml;Views\EntitiesViews\CreateViews\CreateManufacterView.xaml;Views\EntitiesViews\ManufacterView.xaml;Views\LoginView.xaml;Views\HomeView.xaml;
+Components\BindablePasswordBox.xaml;MainWindow.xaml;Views\EntitiesViews\ComponentTypeView.xaml;Views\EntitiesViews\CreateViews\CreateComponentTypeView.xaml;Views\EntitiesViews\CreateViews\CreateCarModelView.xaml;Views\EntitiesViews\CreateViews\CreateComponentView.xaml;Views\EntitiesViews\CreateViews\CreateProviderView.xaml;Views\EntitiesViews\DeleteViews\DeleteComponentTypeView.xaml;Views\EntitiesViews\DeleteViews\DeleteCarModelView.xaml;Views\EntitiesViews\DeleteViews\DeleteComponentView.xaml;Views\EntitiesViews\DeleteViews\DeleteProviderView.xaml;Views\EntitiesViews\DeleteViews\DeleteManufacterView.xaml;Views\EntitiesViews\CarModelView.xaml;Views\EntitiesViews\ComponentView.xaml;Views\EntitiesViews\ProviderView.xaml;Views\EntitiesViews\UpdateViews\UpdateComponentView.xaml;Views\EntitiesViews\UpdateViews\UpdateComponentTypeView.xaml;Views\EntitiesViews\UpdateViews\UpdateCarModelView.xaml;Views\EntitiesViews\UpdateViews\UpdateProviderView.xaml;Views\EntitiesViews\UpdateViews\UpdateManufacterView.xaml;Views\MessageView.xaml;Views\EntitiesViews\CreateViews\CreateManufacterView.xaml;Views\EntitiesViews\ManufacterView.xaml;Views\LoginView.xaml;Views\HomeView.xaml;
 
-False
+True
 

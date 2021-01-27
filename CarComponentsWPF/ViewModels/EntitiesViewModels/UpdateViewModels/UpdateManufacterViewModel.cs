@@ -19,8 +19,8 @@ namespace CarComponentsWPF.ViewModels
 
         public UpdateManufacterViewModel(IDataService<Manufacter> service, Manufacter entity) : base(service, entity)
         {
-            Name = entity.Name;
-            Country = entity.Contry;
+            //Name = _entity.Name;
+            //Country = _entity.Contry;
         }
 
         [Required(ErrorMessage = "Название производителя не должно быть пустым")]

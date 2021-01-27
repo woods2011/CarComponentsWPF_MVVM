@@ -25,7 +25,8 @@ namespace CarComponentsWPF.ViewModels
         {
             _messageViewModel = new MessageViewModel();
             _dataService = service;
-            _entity = new TEntity();
+            if (entity == null)
+                _entity = new TEntity();
         }
 
 
@@ -42,6 +43,7 @@ namespace CarComponentsWPF.ViewModels
 
         protected void CreateEntity()
         {
+
             TEntity entity = _entity;
 
             bool isCreated = true;

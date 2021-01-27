@@ -1,0 +1,256 @@
+﻿<UserControl 
+    x:Class="CarComponentsWPF.Views.ComponentView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:CarComponentsWPF.Views"
+    xmlns:viewmodels="clr-namespace:CarComponentsWPF.ViewModels" 
+    
+    Background="White"
+    mc:Ignorable="d" 
+    d:DesignHeight="500" d:DesignWidth="800"
+    d:DataContext="{d:DesignInstance Type=viewmodels:ComponentViewModel, IsDesignTimeCreatable=True}">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </UserControl.Resources>
+
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+
+        <Grid Grid.Row="0" Visibility="{Binding IsGeneralVMactive, Converter={StaticResource BooleanToVisibilityConverter}}" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+
+            <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical" HorizontalAlignment="Stretch">
+
+                <Button Command="{Binding CreateEntityCommand, UpdateSourceTrigger=PropertyChanged}"
+                Margin="0,5" Content="Добавить новую комплектующую" Width="auto" FontSize="14" HorizontalAlignment="Left"/>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--<Label Grid.Row="0" Grid.Column="0" Content="Группировка по:" VerticalAlignment="Center"/>
+                    <CheckBox  Grid.Row="0" Grid.Column="1" Margin="5,2,0,0" Content="Производителю" IsChecked="{Binding IsGroupManufacter, Mode=OneWayToSource}" VerticalAlignment="Center"/>
+                    <CheckBox  Grid.Row="0" Grid.Column="2" Margin="5,2,0,0" Content="Типу" IsChecked="{Binding IsGroupType, Mode=OneWayToSource}" VerticalAlignment="Center"/>
+                    <CheckBox  Grid.Row="0" Grid.Column="3" Margin="5,2,0,0" Content="Модели авто" IsChecked="{Binding IsGroupCarModel, Mode=OneWayToSource}" VerticalAlignment="Center"/>-->
+
+                    <Label Grid.Row="1" Grid.Column="0" Content="Сортировка(Asc) по:" VerticalAlignment="Center"/>
+                    <!--<CheckBox Grid.Row="1" Grid.Column="1" Margin="5,2,0,0" Content="Названию авто" IsChecked="{Binding IsSortCarModel, Mode=OneWayToSource}" VerticalAlignment="Center"/>-->
+                    <CheckBox Grid.Row="1" Grid.Column="2" Margin="5,2,0,0" Content="Себестоимости" IsChecked="{Binding IsSortPrimeCost, Mode=OneWayToSource}" VerticalAlignment="Center"/>
+                </Grid>
+
+                <StackPanel Margin="0,5"  Orientation="Horizontal">
+                    <Label Content="Поиск по ключевым словам:"/>
+                    <TextBox Width="100" Text="{Binding EntitiesSearchQuery, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center"/>
+                    <Label Content="Учитывать регистр:"/>
+                    <CheckBox Margin="0,2,0,0" IsChecked="{Binding CaseSensitive, Mode=OneWayToSource}" VerticalAlignment="Center"/>
+
+                    <!--<CheckBox IsChecked="{Binding CanModify, Mode=OneWay}"/>                    
+                    <Label Content="Id выбранного элмента:"/>
+                    <TextBox Width="100" Text="{Binding SelectedEntity.id, Mode=OneWay}"/>-->
+                </StackPanel>
+
+                <StackPanel Margin="0,5"  Orientation="Horizontal">
+                    <Label VerticalAlignment="Center" Content="Фильтр:"/>
+
+                    <Label VerticalAlignment="Center" Content="Manufacter:" FontWeight="Bold"/>
+                    <ComboBox Width="170" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center"
+                              ItemsSource="{Binding ManufList}" SelectedValue="{Binding SelectedManuf, UpdateSourceTrigger=PropertyChanged}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <Label Content="id:" FontSize="12" FontWeight="Bold" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding id}" FontSize="12" VerticalAlignment="Center"/>
+                                    <Label Content="Name:" FontSize="12" FontWeight="Bold" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding Name}" FontSize="12" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                    <Label VerticalAlignment="Center" Content="Type:" FontWeight="Bold"/>
+                    <ComboBox Width="170" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center"
+                              ItemsSource="{Binding CompTypeList}" SelectedValue="{Binding SelectedCompType, UpdateSourceTrigger=PropertyChanged}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <Label Content="id:" FontSize="12" FontWeight="Bold" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding id}" FontSize="12" VerticalAlignment="Center"/>
+                                    <Label Content="Name:" FontSize="12" FontWeight="Bold" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding Name}" FontSize="12" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                    <Label VerticalAlignment="Center" Content="Car Model:" FontWeight="Bold"/>
+                    <ComboBox Width="170" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center"
+                              ItemsSource="{Binding CarModelList}" SelectedValue="{Binding SelectedCarModel, UpdateSourceTrigger=PropertyChanged}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <Label Content="id:" FontSize="12" FontWeight="Bold" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding id}" FontSize="12" VerticalAlignment="Center"/>
+                                    <Label Content="Name:" FontSize="12" FontWeight="Bold" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding Name}" FontSize="12" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                    <Button Margin="10,0,5,0" Background="#FFB9D7F3" VerticalAlignment="Stretch" Content="Сбросить фильтр" FontSize="14" BorderBrush="Gray" Command="{Binding ResetFilterCommand}"/>
+                </StackPanel>
+
+                <StackPanel Margin="0,5"  Orientation="Horizontal">
+                    <Button Margin="5,0,5,0" Background="#FFB9D7F3" VerticalAlignment="Center" Content="Вывести Список комплектующих с учетом фильтра" FontSize="14" BorderBrush="Gray" Command="{Binding GetWithFilterEntitiesCommand}"/>
+                    <Button Margin="5,0,5,0" Background="#FFB9D7F3" VerticalAlignment="Center" Content="Вывести Список всех комплектующих (без учета фильтра)" FontSize="14" BorderBrush="Gray" Command="{Binding GetAllEntitiesCommand}"/>
+                </StackPanel>
+
+
+
+            </StackPanel>
+
+
+
+            <ListView Grid.Row="1" Grid.Column="0" Margin="0 10 0 0"
+                          BorderThickness="0"
+                          ItemsSource="{Binding Entities}"
+                          SelectedItem="{Binding SelectedEntity}"
+                          VerticalContentAlignment="Top"
+                          ScrollViewer.VerticalScrollBarVisibility="Auto"
+                          ScrollViewer.CanContentScroll="False">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn>
+                            <GridViewColumnHeader Content="id(Vendor Code)" />
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Padding="0 0 50 0" Text="{Binding id}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn>
+                            <GridViewColumnHeader Content="Manufacter"/>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Padding="0 0 50 0" Text="{Binding Manufacter.Name}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn>
+                            <GridViewColumnHeader Content="Type"/>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Padding="0 0 50 0" Text="{Binding ComponentType.Name}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn>
+                            <GridViewColumnHeader Content="Car Model"/>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Padding="0 0 50 0" Text="{Binding CarModel.Name}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn>
+                            <GridViewColumnHeader Content="Prime Cost"/>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Padding="0 0 50 0" Text="{Binding PrimeCost}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <StackPanel Grid.Row="1" Grid.Column="1" Margin="5,0,0,0" HorizontalAlignment="Right">
+                <Label Margin="0,5" Content="Подробности о выбранной сущности:" HorizontalAlignment="Left" FontSize="14"/>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Margin="0,5" Content="id:" FontWeight="Bold" HorizontalAlignment="Left"/>
+                    <TextBlock MinWidth="120"  Grid.Row="0" Grid.Column="1" Padding="0 0 50 0" Text="{Binding SelectedEntity.id}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+
+                    <Label Grid.Row="1" Grid.Column="0" Margin="0,5" Content="Manufacter id:" FontWeight="Bold" HorizontalAlignment="Left"/>
+                    <TextBlock MinWidth="120" Grid.Row="1" Grid.Column="1" Padding="0 0 50 0" Text="{Binding SelectedEntity.Manufacter.id}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+
+                    <Label Grid.Row="2" Grid.Column="0" Margin="0,5" Content="Manufacter:" FontWeight="Bold" HorizontalAlignment="Left"/>
+                    <TextBlock MinWidth="120" Grid.Row="2" Grid.Column="1" Padding="0 0 50 0" Text="{Binding SelectedEntity.Manufacter.Name}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+
+                    <Label Grid.Row="3" Grid.Column="0" Margin="0,5" Content="Manufacter Country:" FontWeight="Bold" HorizontalAlignment="Left"/>
+                    <TextBlock MinWidth="120" Grid.Row="3" Grid.Column="1" Padding="0 0 50 0" Text="{Binding SelectedEntity.Manufacter.Contry}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+
+                    <Label Grid.Row="4" Grid.Column="0" Margin="0,5" Content="Type id:" FontWeight="Bold" HorizontalAlignment="Left"/>
+                    <TextBlock MinWidth="120" Grid.Row="4" Grid.Column="1" Padding="0 0 50 0" Text="{Binding SelectedEntity.ComponentType.id}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+
+                    <Label Grid.Row="5" Grid.Column="0" Margin="0,5" Content="Type:" FontWeight="Bold" HorizontalAlignment="Left"/>
+                    <TextBlock MinWidth="120" Grid.Row="5" Grid.Column="1" Padding="0 0 50 0" Text="{Binding SelectedEntity.ComponentType.Name}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+
+                    <Label Grid.Row="6" Grid.Column="0" Margin="0,5" Content="Car Model id:" FontWeight="Bold" HorizontalAlignment="Left"/>
+                    <TextBlock MinWidth="120" Grid.Row="6" Grid.Column="1" Padding="0 0 50 0" Text="{Binding SelectedEntity.CarModel.id}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+
+                    <Label Grid.Row="7" Grid.Column="0" Margin="0,5" Content="Car Model:" FontWeight="Bold" HorizontalAlignment="Left"/>
+                    <TextBlock MinWidth="120"  Grid.Row="7" Grid.Column="1" Padding="0 0 50 0" Text="{Binding SelectedEntity.CarModel.Name}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+
+                    <Label Grid.Row="8" Grid.Column="0" Margin="0,5" Content="Prime Cost:" FontWeight="Bold" HorizontalAlignment="Left"/>
+                    <TextBlock MinWidth="120" Grid.Row="8" Grid.Column="1" Padding="0 0 50 0" Text="{Binding SelectedEntity.PrimeCost}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                </Grid>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Command="{Binding UpdateEntityCommand, UpdateSourceTrigger=PropertyChanged}"
+                            Content="Изменить" Width="auto" FontSize="14" Margin="5,5,0,5" HorizontalAlignment="Right"/>
+                    <Button Command="{Binding DeleteEntityCommand, UpdateSourceTrigger=PropertyChanged}"
+                            Content="Удалить" Width="auto" FontSize="14" Margin="5,5,0,5" HorizontalAlignment="Right"/>
+                </StackPanel>
+
+            </StackPanel>
+        </Grid>
+
+        <ScrollViewer Grid.Row="0"  Content="{Binding CreateEntityViewModel}" VerticalScrollBarVisibility="Auto"
+            Visibility="{Binding IsCreateVMactive, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+        <ScrollViewer Grid.Row="0"  Content="{Binding UpdateEntityViewModel}" VerticalScrollBarVisibility="Auto"
+            Visibility="{Binding IsUpdateVMactive, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+        <ScrollViewer Grid.Row="0"  Content="{Binding DeleteEntityViewModel}" VerticalScrollBarVisibility="Auto"
+            Visibility="{Binding IsDeleteVMactive, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+    </Grid>
+
+</UserControl>

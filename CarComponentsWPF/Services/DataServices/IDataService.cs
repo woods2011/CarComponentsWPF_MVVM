@@ -17,6 +17,6 @@ namespace CarComponentsWPF.Services.DataServices
 
         IEnumerable<T> GetAll();
 
-        IEnumerable<T> GetWithFilter(Dictionary<string, string> filterDictionary);
+        IEnumerable<T> GetWithFilter(Dictionary<string, int> filterDictionary);
     }
 }

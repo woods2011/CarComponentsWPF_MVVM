@@ -25,7 +25,7 @@ namespace CarComponentsWPF.ViewModels
         private ICRUDViewModel _createEntityViewModel;
         private ICRUDViewModel _updateEntityViewModel;
         private ICRUDViewModel _deleteEntityViewModel;
-
+        private bool _caseSensitive = false;
 
         static EntityViewModel() { _propForSearchList = new List<string>(); }
         public EntityViewModel(IDataService<TEntity> service, ObservableCollection<TEntity> entities) : base()
@@ -90,7 +90,6 @@ namespace CarComponentsWPF.ViewModels
         public bool IsDeleteVMactive { get => DeleteEntityViewModel != null; }
         public bool IsGeneralVMactive { get => !(IsCreateVMactive || IsUpdateVMactive || IsDeleteVMactive); }
 
-        public bool CaseSensitive { get; set; } = false;
 
         protected virtual bool SearchEntities(object obj)
         {
@@ -102,9 +101,9 @@ namespace CarComponentsWPF.ViewModels
 
                 foreach (var prop in _propForSearchList)
                 {
-                    propValue = (type.GetProperty(prop).GetValue(entity) as String);
+                    propValue = (type.GetProperty(prop)?.GetValue(entity) as String);
                     propValue = CaseSensitive ? propValue : propValue?.ToLower();
-                    if (propValue?.Contains(searchQueLow) ?? false)
+                    if (propValue?.Contains(searchQueLow) ?? true)
                         return true;
                 }
             }
@@ -138,10 +137,10 @@ namespace CarComponentsWPF.ViewModels
             var propSortDescr = _entitiesCollectionView.SortDescriptions.FirstOrDefault(sd => sd.PropertyName == propName);
             if (propSortDescr != default)
                 propSortDescr.Direction = 1 - propSortDescr.Direction;
-                //if (propSortDescr.Direction == ListSortDirection.Ascending)
-                //    propSortDescr.Direction = ListSortDirection.Descending;
-                //else
-                //    propSortDescr.Direction = ListSortDirection.Ascending;
+            //if (propSortDescr.Direction == ListSortDirection.Ascending)
+            //    propSortDescr.Direction = ListSortDirection.Descending;
+            //else
+            //    propSortDescr.Direction = ListSortDirection.Ascending;
         }
 
         public ObservableCollection<TEntity> Entities { get; private set; }    //Заменить на ICollection
@@ -149,6 +148,8 @@ namespace CarComponentsWPF.ViewModels
         public TEntity SelectedEntity { get => _selectedEntity; set { OnPropertyChanged(ref _selectedEntity, value); OnPropertyChanged(nameof(CanModify)); } } //Console.WriteLine(value?.id.ToString() ?? "null");
 
         public string EntitiesSearchQuery { get => _entitiesSearchQuery; set { OnPropertyChanged(ref _entitiesSearchQuery, value); _entitiesCollectionView.Refresh(); } }
+
+        public bool CaseSensitive { get => _caseSensitive; set { _caseSensitive = value; _entitiesCollectionView.Refresh(); } }
 
         public bool CanModify { get => SelectedEntity != null; }
 
@@ -177,7 +178,7 @@ namespace CarComponentsWPF.ViewModels
 
         protected abstract void GetWithFilterEntities();
 
-        protected void GetWithFilterEntities(Dictionary<string, string> filterDictionary)
+        protected void GetWithFilterEntities(Dictionary<string, int> filterDictionary)
         {
             Entities.Clear();
             SelectedEntity = null;
@@ -250,7 +251,7 @@ namespace CarComponentsWPF.ViewModels
             int? id = SelectedEntity?.id;
             if (id.HasValue)
             {
-                UpdateEntityViewModel = cRUDViewModel; 
+                UpdateEntityViewModel = cRUDViewModel;
             }
         }
         protected void UpdateHandler(object sender, CRUDOperationResultEventArgs result)

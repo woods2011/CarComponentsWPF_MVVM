@@ -18,18 +18,76 @@
             <views:LoginView/>
         </DataTemplate>
         
+        
         <DataTemplate DataType="{x:Type viewmodels:ManufacterViewModel}">
             <views:ManufacterView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodels:UpdateManufacterViewModel}">
-            <views:UpdateManufacterView/>
         </DataTemplate>
         <DataTemplate DataType="{x:Type viewmodels:CreateManufacterViewModel}">
             <views:CreateManufacterView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:UpdateManufacterViewModel}">
+            <views:UpdateManufacterView/>
+        </DataTemplate>
         <DataTemplate DataType="{x:Type viewmodels:DeleteManufacterViewModel}">
             <views:DeleteManufacterView/>
         </DataTemplate>
+
+        
+        <DataTemplate DataType="{x:Type viewmodels:ComponentTypeViewModel}">
+            <views:ComponentTypeView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:CreateComponentTypeViewModel}">
+            <views:CreateComponentTypeView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:UpdateComponentTypeViewModel}">
+            <views:UpdateComponentTypeView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:DeleteComponentTypeViewModel}">
+            <views:DeleteComponentTypeView/>
+        </DataTemplate>
+
+        
+        <DataTemplate DataType="{x:Type viewmodels:CarModelViewModel}">
+            <views:CarModelView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:CreateCarModelViewModel}">
+            <views:CreateCarModelView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:UpdateCarModelViewModel}">
+            <views:UpdateCarModelView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:DeleteCarModelViewModel}">
+            <views:DeleteCarModelView/>
+        </DataTemplate>
+
+        
+        <DataTemplate DataType="{x:Type viewmodels:ProviderViewModel}">
+            <views:ProviderView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:CreateProviderViewModel}">
+            <views:CreateProviderView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:UpdateProviderViewModel}">
+            <views:UpdateProviderView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:DeleteProviderViewModel}">
+            <views:DeleteProviderView/>
+        </DataTemplate>
+
+
+        <DataTemplate DataType="{x:Type viewmodels:ComponentViewModel}">
+            <views:ComponentView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:CreateComponentViewModel}">
+            <views:CreateComponentView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:UpdateComponentViewModel}">
+            <views:UpdateComponentView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:DeleteComponentViewModel}">
+            <views:DeleteComponentView/>
+        </DataTemplate>
+
 
     </Application.Resources>
 </Application>

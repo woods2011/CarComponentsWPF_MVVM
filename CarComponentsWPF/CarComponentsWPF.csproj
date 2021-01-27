@@ -142,17 +142,28 @@
     <Compile Include="Services\AuthenticationServices\Class1.cs" />
     <Compile Include="Services\DataServices\GenericDataService.cs" />
     <Compile Include="Services\DataServices\IDataService.cs" />
-    <Compile Include="Services\DataServices\CarModelDataService.cs" />
-    <Compile Include="Services\DataServices\ComponentTypeDataService.cs" />
     <Compile Include="Services\DataServices\ComponentDataService.cs" />
-    <Compile Include="Services\DataServices\ProviderDataService.cs" />
     <Compile Include="Services\DataServices\ProviderComponentDataService.cs" />
-    <Compile Include="Services\DataServices\ManufacterDataService.cs" />
-    <Compile Include="ViewModels\AccountViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\EntitiesViewModels\CreateViewModels\CreateManufacterViewModel.cs" />
+    <Compile Include="ViewModels\EntitiesViewModels\CreateViewModels\CreateProviderViewModel.cs" />
+    <Compile Include="ViewModels\EntitiesViewModels\DeleteViewModels\DeleteComponentViewModel.cs" />
+    <Compile Include="ViewModels\EntitiesViewModels\DeleteViewModels\DeleteProviderViewModel.cs" />
+    <Compile Include="ViewModels\EntitiesViewModels\ComponentViewModel.cs" />
+    <Compile Include="ViewModels\EntitiesViewModels\ProviderViewModel.cs" />
+    <Compile Include="ViewModels\EntitiesViewModels\ComponentTypeViewModel.cs" />
+    <Compile Include="ViewModels\EntitiesViewModels\CreateViewModels\CreateComponentTypeViewModel.cs" />
+    <Compile Include="ViewModels\EntitiesViewModels\CreateViewModels\CreateCarModelViewModel.cs" />
+    <Compile Include="ViewModels\EntitiesViewModels\CreateViewModels\CreateComponentViewModel.cs" />
+    <Compile Include="ViewModels\EntitiesViewModels\DeleteViewModels\DeleteComponentTypeViewModel.cs" />
+    <Compile Include="ViewModels\EntitiesViewModels\DeleteViewModels\DeleteCarModelViewModel.cs" />
     <Compile Include="ViewModels\EntitiesViewModels\DeleteViewModels\DeleteManufacterViewModel.cs" />
     <Compile Include="ViewModels\EntitiesViewModels\DeleteViewModels\DeleteEntityViewModel.cs" />
+    <Compile Include="ViewModels\EntitiesViewModels\CarModelViewModel.cs" />
+    <Compile Include="ViewModels\EntitiesViewModels\UpdateViewModels\UpdateComponentTypeViewModel.cs" />
+    <Compile Include="ViewModels\EntitiesViewModels\UpdateViewModels\UpdateCarModelViewModel.cs" />
+    <Compile Include="ViewModels\EntitiesViewModels\UpdateViewModels\UpdateComponentViewModel.cs" />
+    <Compile Include="ViewModels\EntitiesViewModels\UpdateViewModels\UpdateProviderViewModel.cs" />
     <Compile Include="ViewModels\EntitiesViewModels\UpdateViewModels\UpdateManufacterViewModel.cs" />
     <Compile Include="ViewModels\EntitiesViewModels\UpdateViewModels\UpdateEntityViewModel.cs" />
     <Compile Include="ViewModels\EntitiesViewModels\ICRUDViewModel.cs" />
@@ -163,8 +174,56 @@
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\EntitiesViewModels\ManufacterViewModel.cs" />
     <Compile Include="ViewModels\MessageViewModel.cs" />
+    <Compile Include="Views\EntitiesViews\ComponentTypeView.cs">
+      <DependentUpon>ComponentTypeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EntitiesViews\CreateViews\CreateComponentTypeView.xaml.cs">
+      <DependentUpon>CreateComponentTypeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EntitiesViews\CreateViews\CreateCarModelView.xaml.cs">
+      <DependentUpon>CreateCarModelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EntitiesViews\CreateViews\CreateComponentView.xaml.cs">
+      <DependentUpon>CreateComponentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EntitiesViews\CreateViews\CreateProviderView.cs">
+      <DependentUpon>CreateProviderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EntitiesViews\DeleteViews\DeleteComponentTypeView.xaml.cs">
+      <DependentUpon>DeleteComponentTypeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EntitiesViews\DeleteViews\DeleteCarModelView.xaml.cs">
+      <DependentUpon>DeleteCarModelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EntitiesViews\DeleteViews\DeleteComponentView.cs">
+      <DependentUpon>DeleteComponentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EntitiesViews\DeleteViews\DeleteProviderView.xaml.cs">
+      <DependentUpon>DeleteProviderView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EntitiesViews\DeleteViews\DeleteManufacterView.xaml.cs">
       <DependentUpon>DeleteManufacterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EntitiesViews\CarModelView.cs">
+      <DependentUpon>CarModelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EntitiesViews\ComponentView.cs">
+      <DependentUpon>ComponentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EntitiesViews\ProviderView.cs">
+      <DependentUpon>ProviderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EntitiesViews\UpdateViews\UpdateComponentView.cs">
+      <DependentUpon>UpdateComponentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EntitiesViews\UpdateViews\UpdateComponentTypeView.xaml.cs">
+      <DependentUpon>UpdateComponentTypeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EntitiesViews\UpdateViews\UpdateCarModelView.xaml.cs">
+      <DependentUpon>UpdateCarModelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EntitiesViews\UpdateViews\UpdateProviderView.xaml.cs">
+      <DependentUpon>UpdateProviderView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\EntitiesViews\UpdateViews\UpdateManufacterView.xaml.cs">
       <DependentUpon>UpdateManufacterView.xaml</DependentUpon>
@@ -202,7 +261,71 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\EntitiesViews\ComponentTypeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\EntitiesViews\CreateViews\CreateComponentTypeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\EntitiesViews\CreateViews\CreateCarModelView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\EntitiesViews\CreateViews\CreateComponentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\EntitiesViews\CreateViews\CreateProviderView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\EntitiesViews\DeleteViews\DeleteComponentTypeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\EntitiesViews\DeleteViews\DeleteCarModelView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\EntitiesViews\DeleteViews\DeleteComponentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\EntitiesViews\DeleteViews\DeleteProviderView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\EntitiesViews\DeleteViews\DeleteManufacterView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\EntitiesViews\CarModelView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\EntitiesViews\ComponentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\EntitiesViews\ProviderView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\EntitiesViews\UpdateViews\UpdateComponentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\EntitiesViews\UpdateViews\UpdateComponentTypeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\EntitiesViews\UpdateViews\UpdateCarModelView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\EntitiesViews\UpdateViews\UpdateProviderView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -269,9 +392,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Styles\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Models\CarCompDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

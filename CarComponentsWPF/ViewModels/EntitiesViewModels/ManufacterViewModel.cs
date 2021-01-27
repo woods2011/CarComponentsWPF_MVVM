@@ -20,14 +20,15 @@ namespace CarComponentsWPF.ViewModels
 
         static ManufacterViewModel()
         {
-            //Поля для фильтрации
+            //Поля для поиска
             _propForSearchList.Add(nameof(Manufacter.Name));
             _propForSearchList.Add(nameof(Manufacter.Contry));
         }
 
-        public ManufacterViewModel() : base(new ManufacterDataService(), new ObservableCollection<Manufacter>())
+        public ManufacterViewModel() : base(new GenericDataService<Manufacter>(), new ObservableCollection<Manufacter>())
         {
         }
+        
 
         public bool IsGroupCountry
         {
@@ -64,20 +65,6 @@ namespace CarComponentsWPF.ViewModels
             }
         }
 
-
-        //protected override bool SearchEntities(object obj)
-        //{
-        //    if (obj is Manufacter manufacter)
-        //    {
-        //        var searchQueLow = EntitiesSearchQuery.ToLower();
-
-        //        return manufacter.Name.ToLower().Contains(searchQueLow) ||
-        //            manufacter.Contry.ToLower().Contains(searchQueLow);
-        //    }
-
-        //    return false;
-        //}
-
         protected override void GetWithFilterEntities() { return; }
 
         protected override void CreateEntity()
@@ -102,6 +89,19 @@ namespace CarComponentsWPF.ViewModels
 }
 
 
+
+//protected override bool SearchEntities(object obj)
+//{
+//    if (obj is Manufacter manufacter)
+//    {
+//        var searchQueLow = EntitiesSearchQuery.ToLower();
+
+//        return manufacter.Name.ToLower().Contains(searchQueLow) ||
+//            manufacter.Contry.ToLower().Contains(searchQueLow);
+//    }
+
+//    return false;
+//}
 
 
 //public bool IsGroupCountry { get => _isGroupCountry; set => OnPropertyChanged(ref _isGroupCountry, value); }

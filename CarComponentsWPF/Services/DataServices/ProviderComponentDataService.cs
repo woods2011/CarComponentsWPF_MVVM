@@ -8,7 +8,7 @@ namespace CarComponentsWPF.Services.DataServices
 {
     public class ProviderComponentDataService : GenericDataService<ProviderComponent>
     {
-        public override IEnumerable<ProviderComponent> GetWithFilter(Dictionary<string, string> filterDictionary)
+        public override IEnumerable<ProviderComponent> GetWithFilter(Dictionary<string, int> filterDictionary)
         {
             throw new NotImplementedException();
         }

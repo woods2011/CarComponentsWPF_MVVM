@@ -9,9 +9,9 @@ using System.Data.Entity.Validation;
 
 namespace CarComponentsWPF.Services.DataServices
 {
-    public abstract class GenericDataService<T> : IDataService<T> where T : class, IEntity
+    public class GenericDataService<T> : IDataService<T> where T : class, IEntity
     {
-        public T Create(T entity)
+        public virtual T Create(T entity)
         {
             using (CarCompDB8Entities context = new CarCompDB8Entities())
             {
@@ -24,7 +24,7 @@ namespace CarComponentsWPF.Services.DataServices
             }
         }
 
-        public T Update(T entity)
+        public virtual T Update(T entity)
         {
             using (CarCompDB8Entities context = new CarCompDB8Entities())
             {
@@ -47,7 +47,7 @@ namespace CarComponentsWPF.Services.DataServices
             }
         }
 
-        public T Get(int id)
+        public virtual T Get(int id)
         {
             using (CarCompDB8Entities context = new CarCompDB8Entities())
             {
@@ -57,7 +57,7 @@ namespace CarComponentsWPF.Services.DataServices
             }
         }
 
-        public IEnumerable<T> GetAll()
+        public virtual IEnumerable<T> GetAll()
         {
             using (CarCompDB8Entities context = new CarCompDB8Entities())
             {
@@ -67,7 +67,10 @@ namespace CarComponentsWPF.Services.DataServices
             }
         }
 
-        public abstract IEnumerable<T> GetWithFilter(Dictionary<string, string> filterDictionary);
+        public virtual IEnumerable<T> GetWithFilter(Dictionary<string, int> filterDictionary)
+        {
+            return GetAll();
+        }
     }
 }
 

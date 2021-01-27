@@ -40,7 +40,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Label HorizontalAlignment="Left" Margin="0,5" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="Создать производителя" FontWeight="Bold" FontSize="16"/>
+            <Label HorizontalAlignment="Left" Margin="0,5" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="Добавить нового производителя" FontWeight="Bold" FontSize="16"/>
 
             <Label Grid.Row="1" Grid.Column="0" Content="Name:" FontSize="16"/>
             <TextBox Grid.Row="1" Grid.Column="1" MinWidth="150" MaxWidth="200" HorizontalAlignment="Left"

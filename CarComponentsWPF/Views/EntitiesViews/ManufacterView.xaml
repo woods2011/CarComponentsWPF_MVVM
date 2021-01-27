@@ -35,7 +35,7 @@
             <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical" HorizontalAlignment="Stretch">
 
                 <Button Command="{Binding CreateEntityCommand, UpdateSourceTrigger=PropertyChanged}"
-                Margin="0,5" Content="Создать нового производителя" Width="auto" FontSize="14" HorizontalAlignment="Left"/>
+                Margin="0,5" Content="Добавить нового производителя" Width="auto" FontSize="14" HorizontalAlignment="Left"/>
 
                 <Grid>
                     <Grid.RowDefinitions>

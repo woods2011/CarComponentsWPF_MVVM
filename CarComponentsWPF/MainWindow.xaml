@@ -8,7 +8,7 @@
     xmlns:viewmodels="clr-namespace:CarComponentsWPF.ViewModels"
     
     mc:Ignorable="d"
-    Title="MainWindow" Height="450" Width="900"
+    Title="MainWindow" Height="700" Width="1000"
     d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel, IsDesignTimeCreatable=True}">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
@@ -30,15 +30,16 @@
             <TextBlock Margin="5" Text="Комплектующие автомобиля" FontSize="16"/>
             <Menu Background="#FFD0E3F6" Margin="5,0,5,5" FontSize="14">
                 <MenuItem Background="#FFB9D7F3" Header="Главная" BorderBrush="Gray" Command="{Binding UpdateViewCommand}" CommandParameter="Home"/>
-                <MenuItem Background="#FFB9D7F3" Header="Обслуживание БД" BorderBrush="Gray">
+                <!--<MenuItem Background="#FFB9D7F3" Header="Опции" BorderBrush="Gray">
                     <MenuItem Background="#FFB9D7F3" Header="Опция 1" BorderBrush="Gray" Command="{Binding UpdateViewCommand}" CommandParameter="Account"/>
                     <MenuItem Background="#FFB9D7F3" Header="Опция 2" BorderBrush="Gray" Command="{Binding UpdateViewCommand}" CommandParameter="Account"/>
-                </MenuItem>
+                </MenuItem>-->
                 <MenuItem Background="#FFB9D7F3" Header="Производители" BorderBrush="Gray" Command="{Binding UpdateViewCommand}" CommandParameter="Manufacter"/>
-                <MenuItem Background="#FFB9D7F3" Header="Типы комплектующих" BorderBrush="Gray" Command="{Binding UpdateViewCommand}" CommandParameter="Home"/>
-                <MenuItem Background="#FFB9D7F3" Header="Модели авто" BorderBrush="Gray" Command="{Binding UpdateViewCommand}" CommandParameter="Account"/>
-                <MenuItem Background="#FFB9D7F3" Header="Поставщики" BorderBrush="Gray" Command="{Binding UpdateViewCommand}" CommandParameter="Account"/>
-                <MenuItem Background="#FFB9D7F3" Header="Наличие у поставщиков" BorderBrush="Gray" Command="{Binding UpdateViewCommand}" CommandParameter="Account"/>
+                <MenuItem Background="#FFB9D7F3" Header="Типы комплектующих" BorderBrush="Gray" Command="{Binding UpdateViewCommand}" CommandParameter="ComponentType"/>
+                <MenuItem Background="#FFB9D7F3" Header="Модели авто" BorderBrush="Gray" Command="{Binding UpdateViewCommand}" CommandParameter="CarModel"/>
+                <MenuItem Background="#FFB9D7F3" Header="Комплектующие" BorderBrush="Gray" Command="{Binding UpdateViewCommand}" CommandParameter="Component"/>
+                <MenuItem Background="#FFB9D7F3" Header="Поставщики" BorderBrush="Gray" Command="{Binding UpdateViewCommand}" CommandParameter="Provider"/>
+                <MenuItem Background="#FFB9D7F3" Header="Наличие у поставщиков" BorderBrush="Gray" Command="{Binding UpdateViewCommand}" CommandParameter="ProviderComponent"/>
             </Menu>
         </StackPanel>
 
