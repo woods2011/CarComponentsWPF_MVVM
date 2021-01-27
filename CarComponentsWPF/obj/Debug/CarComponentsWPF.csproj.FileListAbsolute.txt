@@ -68,3 +68,5 @@ C:\Users\arter\source\repos\CarComponentsWPF\CarComponentsWPF_MVVM\CarComponents
 C:\Users\arter\source\repos\CarComponentsWPF\CarComponentsWPF_MVVM\CarComponentsWPF\obj\Debug\Views\EntitiesViews\UpdateViews\UpdateManufacterView.baml
 C:\Users\arter\source\repos\CarComponentsWPF\CarComponentsWPF_MVVM\CarComponentsWPF\obj\Debug\Views\LoginView.g.cs
 C:\Users\arter\source\repos\CarComponentsWPF\CarComponentsWPF_MVVM\CarComponentsWPF\obj\Debug\Views\LoginView.baml
+C:\Users\arter\source\repos\CarComponentsWPF\CarComponentsWPF_MVVM\CarComponentsWPF\obj\Debug\Components\BindablePasswordBox.g.cs
+C:\Users\arter\source\repos\CarComponentsWPF\CarComponentsWPF_MVVM\CarComponentsWPF\obj\Debug\Components\BindablePasswordBox.baml
